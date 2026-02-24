@@ -12,10 +12,8 @@
 #include <AnalyticsPage.h>
 
 MainWindow::MainWindow(QWidget* parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent) 
 {
-    
-    this->setStyleSheet("background-color: #000;" "color: #fff;");
 
     QWidget* central = new QWidget(this);
     setCentralWidget(central);
@@ -25,8 +23,14 @@ MainWindow::MainWindow(QWidget* parent)
     sidebar = new SidebarWidget();
     pages = new QStackedWidget();
 
+    sidebar->setObjectName("sidebar");
+    pages->setObjectName("content");
+
     layout->addWidget(sidebar);
     layout->addWidget(pages);
+
+    layout->setContentsMargins(0,0,0,0);
+    layout->setSpacing(0);
 
     HomePage* homePage = new HomePage();
     ProfilePage* profilePage = new ProfilePage();

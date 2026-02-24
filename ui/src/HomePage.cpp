@@ -12,14 +12,27 @@ HomePage::HomePage(QWidget* parent)
 
 void HomePage::setupUI()
 {
-    auto* layout = new QVBoxLayout(this);
+    auto* layout = new QHBoxLayout(this);
+    
+    layout->setSpacing(10);
 
-    titleLabel = new QLabel("Dashboard");
-    titleLabel->setObjectName("Home");
+    auto* dailyContent = new QWidget();
+    dailyContent->setObjectName("dailyContent");
+    auto* statsContent = new QWidget();
+    
+    auto* statLayout = new QVBoxLayout(statsContent);
+    statLayout->setContentsMargins(0, 0, 0, 0);
 
-    auto* testButton = new QPushButton("Test Action");
+    statLayout->setSpacing(10);
+    
+    auto* main = new QWidget();
+    main->setObjectName("dailyContent");
+    auto* secondary = new QWidget();
+    secondary->setObjectName("statsContent");
 
-    layout->addWidget(titleLabel);
-    layout->addWidget(testButton);
-    layout->addStretch();
+    statLayout->addWidget(main, 1);
+    statLayout->addWidget(secondary, 2);
+
+    layout->addWidget(dailyContent, 3);
+    layout->addWidget(statsContent, 1);
 }
