@@ -1,0 +1,57 @@
+QMainWindow {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+QLabel {
+    color: #ffffff;
+}
+
+QPushButton {
+    color: #ffffff;
+}
+
+#titlebar {
+    border: 1px solid #ffffff; 
+}
+
+#titlebar QLabel {
+    font-size: 24px;
+}
+
+#titlebarBtn {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    text-align: center;
+}
+
+#titlebarBtn:hover {
+    background-color: #228be6;
+    color: #ffffff;
+}
+
+
+#sidebar {
+    border: 1px solid #ffffff;   
+}
+
+#sidebarBtn {
+    background-color: #000000;
+    border: none;
+}
+
+#sidebarBtn:hover {
+    background-color: #228be6;
+}
+
+#sidebarBtn QLabel {
+    font-size: 18px;
+}
+
+#seperator {
+    margin-left: 16px;
+    margin-right: 16px;
+
+    background-color: #ffffff;
+}

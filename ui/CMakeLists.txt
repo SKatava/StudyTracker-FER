@@ -1,19 +1,25 @@
 qt_add_executable(study_tracker
     src/main.cpp
-    src/MainWindow.cpp
-    src/SidebarWidget.cpp
-    src/HomePage.cpp
-    src/ProfilePage.cpp
-    src/SubjectsPage.cpp
-    src/AnalyticsPage.cpp
+    src/Application.cpp
 
-    include/MainWindow.h
-    include/SidebarWidget.h
-    include/HomePage.h
-    include/ProfilePage.h
-    include/SubjectsPage.h
-    include/AnalyticsPage.h
+    #layout
+    src/layout/MainWindow.cpp
+    include/layout/MainWindow.h
+    src/layout/Titlebar.cpp
+    include/layout/Titlebar.h
+    src/layout/Sidebar.cpp
+    include/layout/Sidebar.h
+
+    #components
+    src/components/SidebarBtn.cpp
+    include/components/SidebarBtn.h
+    src/components/Separator.cpp
+    include/components/Separator.h
 )
+
+qt_add_resources(APP_RESOURCES resources/resources.qrc)
+
+target_sources(study_tracker PRIVATE ${APP_RESOURCES})
 
 target_link_libraries(study_tracker PRIVATE
     Qt6::Core

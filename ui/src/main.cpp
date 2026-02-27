@@ -1,21 +1,7 @@
-#include <QApplication>
-#include <QFile>
-#include <MainWindow.h>
+#include <Application.h>
 
-int main(int argc, char *argv[])
-{
-    QApplication app(argc, argv);
-
-    QFile file("../ui/style.qss");
-    if(file.open(QFile::ReadOnly))
-    {
-        QString style = QLatin1String(file.readAll());
-        app.setStyleSheet(style);
-    }
-
-    MainWindow window;
-    window.show();
-
+int main(int argc, char *argv[]) {
+    Application app(argc, argv);
     return app.exec();
 }
 
