@@ -11,10 +11,10 @@ Sidebar::Sidebar(QWidget* parent) : QFrame(parent) {
 
 
 void Sidebar::setupUI() {
-    mainSegTitle                        = new QLabel("    Main");
-    productivitySegTitle                = new QLabel("    Productivity");
-    socialsSegTitle                     = new QLabel("    Socials");
-    settingsSegTitle                    = new QLabel("    Settings");
+    mainSegTitle                        = new QLabel("Main");
+    productivitySegTitle                = new QLabel("Productivity");
+    socialsSegTitle                     = new QLabel("Socials");
+    settingsSegTitle                    = new QLabel("Settings");
 
     dashboardBtn                        = new SidebarBtn(Icons::Dashboard, "Dashboard");
     subjectsBtn                         = new SidebarBtn(Icons::Subjects, "Subjects");
@@ -31,10 +31,10 @@ void Sidebar::setupUI() {
     this->setObjectName("sidebar");
     this->setFixedWidth(250);
 
-    mainSegTitle->setContentsMargins(4, 0, 0, 8);
-    productivitySegTitle->setContentsMargins(4, 0, 0, 8);
-    socialsSegTitle->setContentsMargins(4, 0, 0, 8);
-    settingsSegTitle->setContentsMargins(4, 0, 0, 8);
+    mainSegTitle->setContentsMargins(16, 0, 0, 8);
+    productivitySegTitle->setContentsMargins(16, 0, 0, 8);
+    socialsSegTitle->setContentsMargins(16, 0, 0, 8);
+    settingsSegTitle->setContentsMargins(16, 0, 0, 8);
 
     layout->setContentsMargins(0, 10, 0, 10);
     layout->setSpacing(0);

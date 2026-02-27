@@ -15,6 +15,29 @@ qt_add_executable(study_tracker
     include/components/SidebarBtn.h
     src/components/Separator.cpp
     include/components/Separator.h
+
+    #pages
+    src/pages/DashboardPage.cpp
+    include/pages/DashboardPage.h
+    src/pages/SubjectsPage.cpp
+    include/pages/SubjectsPage.h
+    src/pages/AnalyticsPage.cpp
+    include/pages/AnalyticsPage.h
+    src/pages/TasksPage.cpp
+    include/pages/TasksPage.h
+    src/pages/CalendarPage.cpp
+    include/pages/CalendarPage.h
+    src/pages/SessionsPage.cpp
+    include/pages/SessionsPage.h
+    src/pages/LeaderboardPage.cpp
+    include/pages/LeaderboardPage.h
+    src/pages/ProfilePage.cpp
+    include/pages/ProfilePage.h
+    src/pages/PreferencesPage.cpp
+    include/pages/PreferencesPage.h
+
+
+
 )
 
 qt_add_resources(APP_RESOURCES resources/resources.qrc)

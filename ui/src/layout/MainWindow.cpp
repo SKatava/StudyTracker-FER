@@ -21,6 +21,15 @@ void MainWindow::setupUI() {
     body            = new QWidget();
     bodyLayout      = new QHBoxLayout(body);
     sidebar         = new Sidebar();
+    dashboardPage   = new DashboardPage();
+    subjectsPage    = new SubjectsPage();
+    analyticsPage   = new AnalyticsPage();
+    tasksPage       = new TasksPage();
+    calendarPage    = new CalendarPage();
+    sessionsPage    = new SessionsPage();
+    leaderboardPage = new LeaderboardPage();
+    profilePage     = new ProfilePage();
+    preferencesPage = new PreferencesPage();
     pages           = new QStackedWidget();
     
     setCentralWidget(central);
@@ -34,11 +43,36 @@ void MainWindow::setupUI() {
     bodyLayout->setContentsMargins(10, 10, 10, 10);
 
     bodyLayout->addWidget(sidebar);
-    bodyLayout->addWidget(pages);
-     
 
+    pages->addWidget(dashboardPage);
+    pages->addWidget(subjectsPage);
+    pages->addWidget(analyticsPage);
+    pages->addWidget(tasksPage);
+    pages->addWidget(calendarPage);
+    pages->addWidget(sessionsPage);
+    pages->addWidget(leaderboardPage);
+    pages->addWidget(profilePage);
+    pages->addWidget(preferencesPage);
+    
+    bodyLayout->addWidget(pages);
 }
 
 void MainWindow::setupConnections() {
+    pageMap["dashboard"] = dashboardPage;
+    pageMap["subjects"] = subjectsPage;
+    pageMap["analytics"] = analyticsPage;
+    pageMap["tasks"] = tasksPage;
+    pageMap["calendar"] = calendarPage;
+    pageMap["sessions"] = sessionsPage;
+    pageMap["leaderboard"] = leaderboardPage;
+    pageMap["profile"] = profilePage;
+    pageMap["preferences"] = preferencesPage;
 
+    connect(sidebar, &Sidebar::navigateTo, this, &MainWindow::navigateToPage);
+}
+
+void MainWindow::navigateToPage(const QString& page) {
+    if(pageMap.contains(page)) {
+        pages->setCurrentWidget(pageMap[page]);
+    }
 }

@@ -9,6 +9,15 @@
 //Personal header
 #include <layout/Titlebar.h>
 #include <layout/Sidebar.h>
+#include <pages/DashboardPage.h>
+#include <pages/SubjectsPage.h>
+#include <pages/AnalyticsPage.h>
+#include <pages/TasksPage.h>
+#include <pages/CalendarPage.h>
+#include <pages/SessionsPage.h>
+#include <pages/LeaderboardPage.h>
+#include <pages/ProfilePage.h>
+#include <pages/PreferencesPage.h>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -28,8 +37,23 @@ private:
 
     QStackedWidget* pages;
 
-    Titlebar* titlebar;
-    Sidebar* sidebar;
+    Titlebar*           titlebar;
+    Sidebar*            sidebar;
+    DashboardPage*      dashboardPage;
+    SubjectsPage*       subjectsPage;
+    AnalyticsPage*      analyticsPage;
+    TasksPage*          tasksPage;
+    CalendarPage*       calendarPage;
+    SessionsPage*       sessionsPage;
+    LeaderboardPage*    leaderboardPage;
+    ProfilePage*        profilePage;
+    PreferencesPage*    preferencesPage;
+
+
+    QMap<QString, QWidget*> pageMap;
+
+private slots:
+    void navigateToPage(const QString& page);
 };
 
 #endif
