@@ -11,6 +11,7 @@ class SidebarBtn : public QPushButton {
 
 public:
     explicit SidebarBtn(const QString& icon, const QString& content);
+    void SetActive(bool active);
 
 private:
     QHBoxLayout* layout;

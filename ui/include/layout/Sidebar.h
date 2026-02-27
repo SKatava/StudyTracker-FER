@@ -16,6 +16,8 @@ public:
 private:
     void setupUI();
     void setupConnections();
+    void setActiveButton(SidebarBtn* button);
+    void connectButton(SidebarBtn* button, const QString& page);
 
     QVBoxLayout*    layout;
 
@@ -34,7 +36,10 @@ private:
     SidebarBtn*     profileBtn;
     SidebarBtn*     preferencesBtn;
 
+    SidebarBtn* activeButton = nullptr;
 
+signals:
+    void navigateTo(const QString& page);
 };
 
 

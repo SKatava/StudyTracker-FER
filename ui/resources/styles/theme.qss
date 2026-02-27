@@ -31,7 +31,6 @@ QPushButton {
     color: #ffffff;
 }
 
-
 #sidebar {
     border: 1px solid #ffffff;   
 }
@@ -43,6 +42,10 @@ QPushButton {
 
 #sidebarBtn:hover {
     background-color: #228be6;
+}
+
+#sidebarBtn[active="true"] {
+    background-color: #228be6; 
 }
 
 #sidebarBtn QLabel {

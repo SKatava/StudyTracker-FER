@@ -1,6 +1,7 @@
 #include <components/SidebarBtn.h>
 
 #include <QFont>
+#include <QStyle>
 
 #include <Fonts.h>
 
@@ -22,4 +23,11 @@ SidebarBtn::SidebarBtn(const QString& icon, const QString& content) : QPushButto
     layout->addWidget(this->icon);
     layout->addWidget(this->content);
     layout->addStretch();
+}
+
+void SidebarBtn::SetActive(bool active) {
+    setProperty("active", active);
+    style()->unpolish(this);
+    style()->polish(this);
+    update();
 }

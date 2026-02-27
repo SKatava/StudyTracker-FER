@@ -5,7 +5,8 @@
 #include <components/Separator.h>
 
 Sidebar::Sidebar(QWidget* parent) : QFrame(parent) {
-   setupUI();  
+   setupUI(); 
+   setupConnections();
 }
 
 
@@ -30,7 +31,13 @@ void Sidebar::setupUI() {
     this->setObjectName("sidebar");
     this->setFixedWidth(250);
 
+    mainSegTitle->setContentsMargins(4, 0, 0, 8);
+    productivitySegTitle->setContentsMargins(4, 0, 0, 8);
+    socialsSegTitle->setContentsMargins(4, 0, 0, 8);
+    settingsSegTitle->setContentsMargins(4, 0, 0, 8);
+
     layout->setContentsMargins(0, 10, 0, 10);
+    layout->setSpacing(0);
 
     layout->addWidget(mainSegTitle);
     layout->addWidget(dashboardBtn);
@@ -63,8 +70,32 @@ void Sidebar::setupUI() {
 
     layout->addStretch();
 
+    setActiveButton(dashboardBtn);
 }
 
 void Sidebar::setupConnections() {
-    
+    connectButton(dashboardBtn, "dashboard");
+    connectButton(subjectsBtn, "subjects");
+    connectButton(analyticsBtn, "analytics");
+    connectButton(tasksBtn, "tasks");
+    connectButton(calendarBtn, "calendar");
+    connectButton(sessionsBtn, "sessions");
+    connectButton(leaderboardBtn, "leaderboard");
+    connectButton(profileBtn, "profile");
+    connectButton(preferencesBtn, "preferences");
+}
+
+void Sidebar::setActiveButton(SidebarBtn* button) {
+    if(activeButton)
+        activeButton->SetActive(false); 
+    activeButton = button;
+    if(activeButton)
+        activeButton->SetActive(true);
+}
+
+void Sidebar::connectButton(SidebarBtn* button, const QString& page) {
+    connect(button, &QPushButton::clicked, this, [this, button, page]() {
+        setActiveButton(button);
+        emit navigateTo(page);
+    });
 }
