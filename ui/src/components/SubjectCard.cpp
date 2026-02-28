@@ -17,10 +17,12 @@ void SubjectCard::setupUI() {
     progressBar->setRange(0, 100);   // minimalna i maksimalna vrijednost
     progressBar->setValue(80);        // početna vrijednost
     progressBar->setTextVisible(false);
+    progressBar->setFixedHeight(20);
 
     this->setObjectName("subjectCard");
-    this->setFixedSize(250, 250);
+    this->setFixedSize(300, 200);
     subjectTitle->setObjectName("subjectCardTitle");
+    ECTS->setObjectName("subjectCardContent");
 
     startSessionBtn->setFixedSize(150, 50);
 

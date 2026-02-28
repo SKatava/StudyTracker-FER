@@ -11,13 +11,7 @@ void Titlebar::setupUI() {
     closeBtn        = new QPushButton(Icons::Close);
     maximizeBtn     = new QPushButton(Icons::Maximize);
     minimizeBtn     = new QPushButton(Icons::Minimize);
-    title           = new QLabel("Study Tracker");
-    logo            = new QLabel(this);
     
-    QPixmap pixmap(":/images/logo.png");
-    logo->setPixmap(pixmap.scaled(40, 40, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-    logo->setFixedSize(40, 40);
-   
     QFont iconFont(Fonts::IconFamily);
     iconFont.setPixelSize(16);
 
@@ -38,9 +32,6 @@ void Titlebar::setupUI() {
     minimizeBtn->setObjectName("titlebarBtn");
     minimizeBtn->setFont(iconFont);
     minimizeBtn->setFixedSize(40, 38);
-
-    layout->addWidget(logo);
-    layout->addWidget(title);
 
     layout->addStretch();
 

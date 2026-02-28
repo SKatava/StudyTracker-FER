@@ -20,8 +20,6 @@ private:
     QPushButton* closeBtn;
     QPushButton* maximizeBtn;
     QPushButton* minimizeBtn;
-    QLabel* title;
-    QLabel* logo;
 };
 
 #endif

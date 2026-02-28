@@ -16,6 +16,8 @@ void Sidebar::setupUI() {
     socialsSegTitle                     = new QLabel("Socials");
     settingsSegTitle                    = new QLabel("Settings");
 
+    logo                                = new Logo();
+
     dashboardBtn                        = new SidebarBtn(Icons::Dashboard, "Dashboard");
     subjectsBtn                         = new SidebarBtn(Icons::Subjects, "Subjects");
     analyticsBtn                        = new SidebarBtn(Icons::Analytics, "Analytics");
@@ -38,6 +40,12 @@ void Sidebar::setupUI() {
 
     layout->setContentsMargins(0, 10, 0, 10);
     layout->setSpacing(0);
+
+    layout->addWidget(logo, 0, Qt::AlignCenter);
+
+    layout->addSpacing(16); 
+    layout->addWidget(new Separator());
+    layout->addSpacing(16); 
 
     layout->addWidget(mainSegTitle);
     layout->addWidget(dashboardBtn);

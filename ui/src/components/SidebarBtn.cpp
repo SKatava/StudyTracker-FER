@@ -27,7 +27,14 @@ SidebarBtn::SidebarBtn(const QString& icon, const QString& content) : QPushButto
 
 void SidebarBtn::SetActive(bool active) {
     setProperty("active", active);
+
     style()->unpolish(this);
     style()->polish(this);
+    icon->style()->unpolish(icon);
+    icon->style()->polish(icon);
+    content->style()->unpolish(content);
+    content->style()->polish(content);
+
+
     update();
 }

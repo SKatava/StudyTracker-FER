@@ -1,34 +1,36 @@
 QMainWindow {
     background-color: #000000;
-    color: #ffffff;
+    color: #c5c5c5;
 }
 
 QLabel {
-    color: #ffffff;
+    color: #c5c5c5;
 }
 
 QPushButton {
-    background-color: #000000;
+    background-color: #191919;
     color: #ffffff;
-    border: 1px solid #ffffff;
+    border: 1px solid #1a1a1a;
     border-radius: 8px;
 }
 
 QPushButton:hover {
-    background-color: #228be6;
+    background-color: #0c0c0c;
+    border: 1px solid #191919;
 }
 
 #titlebar {
-    border: 1px solid #ffffff; 
+    border: 1px solid #1a1a1a; 
+    background-color: #0c0c0c;
 }
 
-#titlebar QLabel {
+#logo QLabel {
     font-size: 24px;
 }
 
 #titlebarBtn {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #0c0c0c;
+    color: #c5c5c5;
     border: none;
     text-align: center;
 }
@@ -39,21 +41,26 @@ QPushButton:hover {
 }
 
 #sidebar {
-    border: 1px solid #ffffff;   
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;   
 }
 
 #sidebarBtn {
-    background-color: #000000;
+    background-color: #0c0c0c;
     border: none;
     border-radius: 0px;
 }
 
 #sidebarBtn:hover {
-    background-color: #228be6;
+    background-color: #191919;
 }
 
 #sidebarBtn[active="true"] {
-    background-color: #228be6; 
+    background-color: #191919;
+}
+
+#sidebarBtn[active="true"] QLabel {
+    color: #3069c6;
 }
 
 #sidebarBtn QLabel {
@@ -63,17 +70,17 @@ QPushButton:hover {
 #seperator {
     margin-left: 16px;
     margin-right: 16px;
-
-    background-color: #ffffff;
+    background-color: #1a1a1a;
 }
 
 #subjectCard {
-    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
     margin-right: 20px;
 }
 
 #subjectCard:hover {
-    background-color: #1e1e1e;
 }
 
 
@@ -81,18 +88,22 @@ QPushButton:hover {
     font-size: 16px;
 }
 
+#subjectCardContent {
+    color: #404040;
+}
+
 #headerTitle {
     font-size: 24px;
 }
 
 QProgressBar {
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    background-color: black;
+    border: none;
+    border-radius: 8px;
+    background-color: #191919;
 }
 
 QProgressBar::chunk {
-    background-color: #228be6;  /* plavi accent */
-    width: 15px;
-    margin: 0.5px;
+    background-color: #3069c6;
+    border-radius: 8px;
+    margin: 0px;
 }

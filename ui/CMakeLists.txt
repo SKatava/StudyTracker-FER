@@ -21,6 +21,8 @@ qt_add_executable(study_tracker
     include/components/SubjectCard.h
     src/components/Header.cpp
     include/components/Header.h
+    src/components/Logo.cpp
+    include/components/Logo.h
 
     #pages
     src/pages/DashboardPage.cpp

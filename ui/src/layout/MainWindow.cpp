@@ -40,7 +40,7 @@ void MainWindow::setupUI() {
     rootLayout->addWidget(titlebar);
     rootLayout->addWidget(body);
 
-    bodyLayout->setContentsMargins(10, 10, 10, 10);
+    bodyLayout->setContentsMargins(0, 0, 0, 0);
     bodyLayout->setSpacing(20);
 
     bodyLayout->addWidget(sidebar);

@@ -6,6 +6,7 @@
 #include <QLayout>
 
 #include <components/SidebarBtn.h>
+#include <components/Logo.h>
 
 class Sidebar : public QFrame {
     Q_OBJECT
@@ -25,6 +26,8 @@ private:
     QLabel*         productivitySegTitle;
     QLabel*         socialsSegTitle;
     QLabel*         settingsSegTitle;
+
+    Logo*           logo;
 
     SidebarBtn*     dashboardBtn;
     SidebarBtn*     subjectsBtn;

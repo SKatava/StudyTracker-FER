@@ -16,7 +16,7 @@ void DashboardPage::setupUI() {
     Header* activeSubjectsHeader = new Header(nullptr, "Active Subjects");
     QWidget* activeSubjects = new QWidget();
 
-    rootLayout->setContentsMargins(0, 0, 0, 0);
+    rootLayout->setContentsMargins(10, 10, 10, 10);
     rootLayout->addWidget(activeSubjectsHeader);
     rootLayout->addWidget(activeSubjects);
     rootLayout->addStretch();
