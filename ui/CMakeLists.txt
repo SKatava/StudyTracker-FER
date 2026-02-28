@@ -9,12 +9,18 @@ qt_add_executable(study_tracker
     include/layout/Titlebar.h
     src/layout/Sidebar.cpp
     include/layout/Sidebar.h
+    src/layout/FlowLayout.cpp
+    include/layout/FlowLayout.h
 
     #components
     src/components/SidebarBtn.cpp
     include/components/SidebarBtn.h
     src/components/Separator.cpp
     include/components/Separator.h
+    src/components/SubjectCard.cpp
+    include/components/SubjectCard.h
+    src/components/Header.cpp
+    include/components/Header.h
 
     #pages
     src/pages/DashboardPage.cpp

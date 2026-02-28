@@ -8,7 +8,14 @@ QLabel {
 }
 
 QPushButton {
+    background-color: #000000;
     color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+}
+
+QPushButton:hover {
+    background-color: #228be6;
 }
 
 #titlebar {
@@ -38,6 +45,7 @@ QPushButton {
 #sidebarBtn {
     background-color: #000000;
     border: none;
+    border-radius: 0px;
 }
 
 #sidebarBtn:hover {
@@ -57,4 +65,34 @@ QPushButton {
     margin-right: 16px;
 
     background-color: #ffffff;
+}
+
+#subjectCard {
+    border: 1px solid #ffffff;
+    margin-right: 20px;
+}
+
+#subjectCard:hover {
+    background-color: #1e1e1e;
+}
+
+
+#subjectCardTitle {
+    font-size: 16px;
+}
+
+#headerTitle {
+    font-size: 24px;
+}
+
+QProgressBar {
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    background-color: black;
+}
+
+QProgressBar::chunk {
+    background-color: #228be6;  /* plavi accent */
+    width: 15px;
+    margin: 0.5px;
 }

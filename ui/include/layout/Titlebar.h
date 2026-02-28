@@ -4,6 +4,7 @@
 #include <QFrame>
 #include <QLayout>
 #include <QPushButton>
+#include <QLabel>
 
 class Titlebar : public QFrame {
     Q_OBJECT
@@ -19,6 +20,8 @@ private:
     QPushButton* closeBtn;
     QPushButton* maximizeBtn;
     QPushButton* minimizeBtn;
+    QLabel* title;
+    QLabel* logo;
 };
 
 #endif
