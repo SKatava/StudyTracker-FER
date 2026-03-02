@@ -3,6 +3,14 @@
 
 #include <QWidget>
 #include <QLayout>
+#include <QLabel>
+#include <QPushButton>
+
+#include <components/SubjectCard.h>
+#include <components/Header.h>
+#include <layout/FlowLayout.h>
+
+
 
 class DashboardPage : public QWidget {
     Q_OBJECT
@@ -14,6 +22,15 @@ private:
     void setupUI();
     void setupConnections();
 
+    QVBoxLayout* rootLayout;
+    FlowLayout* activeSubjectsLayout;
+
+    QWidget* activeSubjects;
+
+    Header* activeSubjectsHeader;
+    Header* statsHeader;
+
+    QPushButton* addSubjectBtn;
     
 };
 

@@ -17,7 +17,7 @@ void SubjectCard::setupUI() {
     progressBar->setRange(0, 100);   // minimalna i maksimalna vrijednost
     progressBar->setValue(80);        // početna vrijednost
     progressBar->setTextVisible(false);
-    progressBar->setFixedHeight(20);
+    progressBar->setFixedHeight(10);
 
     this->setObjectName("subjectCard");
     this->setFixedSize(300, 200);

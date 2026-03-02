@@ -10,7 +10,7 @@ class Database {
         
         //Object construction, destruction and movement--------------------------------------------------
 
-        explicit Database(const std::string& file);
+        explicit Database();
 
         Database(const Database&) = delete;
         Database& operator=(const Database&) = delete;
@@ -26,18 +26,19 @@ class Database {
 
         //Core functions---------------------------------------------------------------------------------
 
-        void InitializeScheme();
+        void InitializeSchema();
 
     private:
 
         //Private members/data---------------------------------------------------------------------------
 
         sqlite3*                m_db                {nullptr};
+        std::string             m_sqlFolder;
 
         //Private functions------------------------------------------------------------------------------
         
-        std::string LoadSQLFile(const std::string& path) const;
         void ExecSQL(const std::string& querry) const;
+        std::string GetUserDatabasePath();
 };
 
 #endif

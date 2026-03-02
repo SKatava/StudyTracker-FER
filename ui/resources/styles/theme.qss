@@ -30,13 +30,26 @@ QPushButton:hover {
 
 #titlebarBtn {
     background-color: #0c0c0c;
-    color: #c5c5c5;
+    color: #515151;
     border: none;
     text-align: center;
+    border-radius: 0px;
 }
 
 #titlebarBtn:hover {
-    background-color: #228be6;
+    background-color: #191919;
+}
+
+#closeBtn {
+    background-color: #0c0c0c;
+    color: #515151;
+    border: none;
+    text-align: center;
+    border-radius: 0px;
+}
+
+#closeBtn:hover {
+    background-color: #ef4444;
     color: #ffffff;
 }
 
@@ -89,7 +102,7 @@ QPushButton:hover {
 }
 
 #subjectCardContent {
-    color: #404040;
+    color: #5d5d5d;
 }
 
 #headerTitle {
@@ -98,12 +111,25 @@ QPushButton:hover {
 
 QProgressBar {
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     background-color: #191919;
 }
 
 QProgressBar::chunk {
     background-color: #3069c6;
-    border-radius: 8px;
+    border-radius: 5px;
     margin: 0px;
+}
+
+#addSubjectBtn {
+    background-color: #0c0c0c;
+    color: #5d5d5d;
+    border: 1.5px dashed #1a1a1a;
+    font-size: 24px;
+}
+
+#addSubjectBtn:hover {
+    border: 1.5px dashed #ffffff;
+    color: #ffffff;
+    color: #ffffff;;
 }

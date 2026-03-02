@@ -3,11 +3,15 @@
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
+#include <filesystem>
+
+#include <core/persistence/Schema.h>
 
 //Object construction, destruction and movement--------------------------------------------------
 
 //Database contructor - open the database
-Database::Database(const std::string& file) {
+Database::Database() {
+    std::string file = GetUserDatabasePath();
     if(sqlite3_open(file.c_str(), &m_db) != SQLITE_OK) {
         std::string error = sqlite3_errmsg(m_db);
         sqlite3_close(m_db);
@@ -35,23 +39,13 @@ sqlite3* Database::Get() const noexcept {
 //Core functions---------------------------------------------------------------------------------
 
 //Create a database schema(if it doesn't exist)
-void Database::InitializeScheme() {
-    ExecSQL(LoadSQLFile("../sql/001_create_tables.sql"));
+void Database::InitializeSchema() {
+    for (const auto& stmt : Schema::GetTables()) {
+        ExecSQL(stmt);
+    }
 }
 
 //Private functions------------------------------------------------------------------------------
-
-//Load the .sql file as a string
-std::string Database::LoadSQLFile(const std::string& path) const {
-    std::fstream file(path);
-    if(!file) {
-        throw std::runtime_error("Failed to open SQL file: " + path);
-    }
-
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-    return buffer.str();
-}
 
 //Execute the sql querry on the current database
 void Database::ExecSQL(const std::string& querry) const {
@@ -61,4 +55,27 @@ void Database::ExecSQL(const std::string& querry) const {
         sqlite3_free(errMsg);
         throw std::runtime_error("Can't execute SQL querry: " + error);
     }
+}
+
+//Get the location of the database based on OS
+std::string Database::GetUserDatabasePath() {
+    std::filesystem::path path;
+
+#ifdef _WIN32
+    char* appData = std::getenv("APPDATA");
+    path = appData ? appData : ".";
+    path /= "study-tracker";
+#elif __APPLE__
+    char* home = std::getenv("HOME");
+    path = home ? home : ".";
+    path /= "Library/Application Support/study-tracker";
+#else // Linux
+    char* home = std::getenv("HOME");
+    path = home ? home : ".";
+    path /= ".local/share/study-tracker";
+#endif
+
+    std::filesystem::create_directories(path); // ensure folder exists
+    path /= "study-tracker.db"; // final DB file
+    return path.string();
 }

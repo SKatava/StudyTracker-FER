@@ -21,7 +21,7 @@ void Titlebar::setupUI() {
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
 
-    closeBtn->setObjectName("titlebarBtn");
+    closeBtn->setObjectName("closeBtn");
     closeBtn->setFont(iconFont);
     closeBtn->setFixedSize(40, 38);
 

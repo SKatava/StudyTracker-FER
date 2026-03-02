@@ -2,7 +2,10 @@ set(NAME studyTracker-core)
 add_library(${NAME} STATIC)
 target_sources(${NAME} PRIVATE
     src/domain/Subject.cpp
+
     src/persistence/Database.cpp
+    
+    src/services/AppContext.cpp
 )
 
 target_include_directories(${NAME}

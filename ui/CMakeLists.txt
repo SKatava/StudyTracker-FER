@@ -53,6 +53,7 @@ qt_add_resources(APP_RESOURCES resources/resources.qrc)
 target_sources(study_tracker PRIVATE ${APP_RESOURCES})
 
 target_link_libraries(study_tracker PRIVATE
+    studyTracker-core
     Qt6::Core
     Qt6::Widgets
 )

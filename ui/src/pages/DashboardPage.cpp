@@ -1,32 +1,30 @@
 #include <pages/DashboardPage.h>
-#include <QLabel>
-
-#include <components/SubjectCard.h>
-#include <components/Header.h>
-#include <layout/FlowLayout.h>
-
 DashboardPage::DashboardPage(QWidget* parent) : QWidget(parent) {
     setupUI();
     setupConnections();
 }
 
 void DashboardPage::setupUI() {
-    QVBoxLayout* rootLayout = new QVBoxLayout(this);
-
-    Header* activeSubjectsHeader = new Header(nullptr, "Active Subjects");
-    QWidget* activeSubjects = new QWidget();
+    activeSubjects          = new QWidget();
+    activeSubjectsHeader    = new Header(nullptr, "Active Subjects");
+    addSubjectBtn           = new QPushButton("+ Add Subject");
+    rootLayout              = new QVBoxLayout(this);
+    activeSubjectsLayout    = new FlowLayout(activeSubjects, 0, 10, 10);
 
     rootLayout->setContentsMargins(10, 10, 10, 10);
     rootLayout->addWidget(activeSubjectsHeader);
     rootLayout->addWidget(activeSubjects);
     rootLayout->addStretch();
 
-    FlowLayout* layout = new FlowLayout(activeSubjects, 0, 10, 10);
-    
-    for(int i = 0; i < 6; i++) {
+    for(int i = 0; i < 9; i++) {
         SubjectCard* card = new SubjectCard();
-        layout->addWidget(card);
+        activeSubjectsLayout->addWidget(card);
     }
+
+    addSubjectBtn->setFixedSize(280, 200);
+    addSubjectBtn->setObjectName("addSubjectBtn");
+
+    activeSubjectsLayout->addWidget(addSubjectBtn);
 }
 
 void DashboardPage::setupConnections() {

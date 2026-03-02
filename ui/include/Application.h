@@ -5,6 +5,9 @@
 
 #include <layout/MainWindow.h>
 
+#include <core/services/AppContext.h>
+
+
 class Application : public QApplication {
     public:
         explicit Application(int& argc, char** argv);
@@ -15,6 +18,8 @@ class Application : public QApplication {
         void loadWindowIcon();
 
         MainWindow window;
+
+        AppContext appContext;
 };
 
 #endif
