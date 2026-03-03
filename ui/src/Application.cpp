@@ -8,6 +8,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv) {
     loadStyles();
     loadFonts();
     loadWindowIcon();
+    loadAppContext();
 
     window.show();
 }
@@ -37,4 +38,9 @@ void Application::loadFonts() {
 
 void Application::loadWindowIcon() {
      this->setWindowIcon(QIcon(":/images/logo.png"));
+}
+
+void Application::loadAppContext() {
+    auto subjectRepo = std::make_unique<SQLiteSubjectRepository>(database);
+    appContext = std::make_unique<AppContext>(std::move(subjectRepo));
 }

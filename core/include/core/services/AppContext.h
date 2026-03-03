@@ -1,14 +1,18 @@
 #ifndef APPCONTEXT_CLASS_H
 #define APPCONTEXT_CLASS_H
 
-#include <core/persistence/Database.h>
+#include <memory>
+
+#include <core/services/SubjectService.h>
 
 class AppContext {
     public:
-        explicit AppContext();
+        AppContext(std::unique_ptr<ISubjectRepository> subjectRepo);
+        SubjectService& Subjects();
 
     private:
-        Database m_db;
+        std::unique_ptr<ISubjectRepository> m_subjectRepo;
+        SubjectService m_subjectService;
 };
 
 #endif

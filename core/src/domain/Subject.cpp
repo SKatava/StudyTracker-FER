@@ -1,7 +1,7 @@
 #include <core/domain/Subject.h>
 
 
-//Object construction, destruction and movement--------------------------------------------------
+// -------------------- Construction --------------------
 
 Subject::Subject(const std::string& name, uint8_t ECTS, uint8_t daysOfSemester) :
     m_name              (name), 
@@ -9,56 +9,51 @@ Subject::Subject(const std::string& name, uint8_t ECTS, uint8_t daysOfSemester) 
     m_daysOfSemester    (daysOfSemester) 
 {
     CalculateNeededHours();
-    m_studySessions.reserve(daysOfSemester); //In case it is done daily
 }
 
-//Getter and setters-----------------------------------------------------------------------------
 
-void Subject::SetName(const std::string& name) {
-    m_name = name;
-}
+
+// -------------------- Getters --------------------
 
 const std::string& Subject::GetName() const noexcept {
     return m_name;
-}
-
-void Subject::SetETCS(const uint8_t& ECTS) {
-    m_ECTS = ECTS;
 }
 
 uint8_t Subject::GetECTS() const noexcept {
     return m_ECTS;
 }
 
+uint16_t Subject::GetDaysOfSemester() const noexcept {
+    return m_daysOfSemester;
+}
+
+uint32_t Subject::GetNeededMinutes() const noexcept {
+    return m_lectureMinutesNeeded + m_studyMinutesNeeded;
+}
+
+uint32_t Subject::GetInvestedMinutes() const noexcept {
+    return m_lectureMinutesDone + m_studyMinutesDone + m_tasksMinutesDone;
+}
+
+// -------------------- Domain Behavior --------------------
+
+void Subject::SetName(const std::string& name) {
+    m_name = name;
+}
+
+void Subject::SetETCS(const uint8_t& ECTS) {
+    m_ECTS = ECTS;
+}
+
 void Subject::SetDaysOfSemester(uint8_t daysOfSemester) {
     m_daysOfSemester = daysOfSemester;
 }
 
-uint8_t Subject::GetDaysOfSemester() const noexcept {
-    return m_daysOfSemester;
-}
 
-uint8_t Subject::GetNeededHours() const noexcept {
-    return m_neededHours;
-}
-
-uint8_t Subject::GetInvestedHours() const noexcept {
-    return m_investedHours;
-}
-
-
-//Core functions---------------------------------------------------------------------------------
-
-void Subject::LogStudySession(uint8_t hours, const std::string& note) {
-    auto now = std::chrono::system_clock::now();
-    auto date = std::chrono::floor<std::chrono::days>(now);
-    m_studySessions.push_back(StudySession(date, hours, note));
-}
-
-//Private functions------------------------------------------------------------------------------
+// -------------------- Internal Logic --------------------
 
 void Subject::CalculateNeededHours() {
-    m_neededHours = m_ECTS * MIN_HOURS_PER_ECTS; 
+    m_studyMinutesNeeded = MIN_HOURS_PER_ECTS * 60 * 25; 
 }
 
 

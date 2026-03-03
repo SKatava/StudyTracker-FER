@@ -1,10 +1,8 @@
-set(NAME study_tracker-core)
+set(NAME study_tracker-backend)
 add_library(${NAME} STATIC)
 target_sources(${NAME} PRIVATE
-    src/domain/Subject.cpp
-
-    src/services/AppContext.cpp
-    src/services/SubjectService.cpp
+    src/sqlite/SQLiteSubjectRepository.cpp
+    src/sqlite/Database.cpp
 )
 
 target_include_directories(${NAME}
@@ -15,6 +13,6 @@ target_include_directories(${NAME}
 )
 
 target_link_libraries(${NAME} PRIVATE
+    study_tracker-core
     SQLite::SQLite3 
 )
-

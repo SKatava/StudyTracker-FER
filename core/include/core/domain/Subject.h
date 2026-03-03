@@ -6,16 +6,15 @@
 #include <chrono>
 #include <vector>
 
-#include "StudySession.h"
 
-#define MIN_HOURS_PER_ECTS 25
-#define MAX_HOURS_PER_ECTS 30
 
 class Subject {
     public:
+        static constexpr uint8_t MIN_HOURS_PER_ECTS = 25;
+        static constexpr uint8_t MAX_HOURS_PER_ECTS = 30;
 
-        //Object construction, destruction and movement--------------------------------------------------
-
+        // -------------------- Construction --------------------
+        
         Subject();
         Subject(const std::string& name, uint8_t ECTS, uint8_t daysOfSemester);
 
@@ -27,37 +26,39 @@ class Subject {
 
         ~Subject() = default;
         
-        //Getter and setters-----------------------------------------------------------------------------
+        // -------------------- Getters --------------------
+
+        [[nodiscard]] const std::string& GetName() const noexcept;
+        [[nodiscard]] uint8_t GetECTS() const noexcept;
+        [[nodiscard]] uint16_t GetDaysOfSemester() const noexcept;
+        [[nodiscard]] uint32_t GetNeededMinutes() const noexcept;
+        [[nodiscard]] uint32_t GetInvestedMinutes() const noexcept;
+
+        // -------------------- Domain Behavior --------------------
 
         void SetName(const std::string& name);
-        [[nodiscard]] const std::string& GetName() const noexcept;
-
         void SetETCS(const uint8_t& ECTS);
-        [[nodiscard]] uint8_t GetECTS() const noexcept;
-
         void SetDaysOfSemester(uint8_t daysOfSemester);
-        [[nodiscard]] uint8_t GetDaysOfSemester() const noexcept;
-
-        [[nodiscard]] uint8_t GetNeededHours() const noexcept;
-        
-        [[nodiscard]] uint8_t GetInvestedHours() const noexcept;
-
-        //Core functions---------------------------------------------------------------------------------
-        
-        void LogStudySession(uint8_t hours, const std::string& notes = "");
+ 
 
     private:
+        // -------------------- State --------------------
 
-        //Private members/data---------------------------------------------------------------------------
-
-        std::string                 m_name              {"UNKNOWN"};
-        uint8_t                     m_ECTS              {0};
-        uint8_t                     m_daysOfSemester    {0};
-        uint8_t                     m_neededHours       {0};
-        uint8_t                     m_investedHours     {0};
-        std::vector<StudySession>   m_studySessions     {};
-
-        //Private functions------------------------------------------------------------------------------
+        int32_t             m_id                    {-1};
+        std::string         m_name                  {"UNKNOWN"};
+        std::string         m_daysTillEnd           {"UNKNOWN"};
+        uint8_t             m_ECTS                  {0};
+        uint16_t            m_daysOfSemester        {0};
+        uint32_t            m_studyMinutesNeeded    {0};
+        uint32_t            m_lectureMinutesNeeded  {0};
+        uint32_t            m_lectureMinutesDone    {0};
+        uint32_t            m_studyMinutesDone      {0};
+        uint32_t            m_tasksMinutesDone      {0};
+        uint8_t             m_points                {0};
+        uint8_t             m_finalGrade            {0};
+        bool                m_isFinished            {false};
+        
+        // -------------------- Internal Logic --------------------
         
         void CalculateNeededHours();
 

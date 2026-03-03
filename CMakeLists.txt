@@ -20,5 +20,6 @@ find_package(Qt6 6.8 REQUIRED COMPONENTS
 )
 
 add_subdirectory(core)
+add_subdirectory(backend)
 add_subdirectory(ui)
 

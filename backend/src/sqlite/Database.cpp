@@ -1,11 +1,12 @@
-#include <core/persistence/Database.h>
+#include <backend/sqlite/Database.h> 
+
+#include <backend/sqlite/Schema.h> 
 
 #include <stdexcept>
 #include <fstream>
 #include <sstream>
 #include <filesystem>
 
-#include <core/persistence/Schema.h>
 
 //Object construction, destruction and movement--------------------------------------------------
 
