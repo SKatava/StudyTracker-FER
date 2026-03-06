@@ -1,4 +1,6 @@
 #include <pages/DashboardPage.h>
+#include <core/services/AppContext.h>
+
 DashboardPage::DashboardPage(QWidget* parent) : QWidget(parent) {
     setupUI();
     setupConnections();
@@ -16,11 +18,13 @@ void DashboardPage::setupUI() {
     rootLayout->addWidget(activeSubjects);
     rootLayout->addStretch();
 
-    for(int i = 0; i < 9; i++) {
-        SubjectCard* card = new SubjectCard();
+    auto subjects = AppContext::Instance().Subjects().GetSubjects();
+
+    for(auto& item : subjects) {
+        SubjectCard* card = new SubjectCard(nullptr, item);
         activeSubjectsLayout->addWidget(card);
     }
-
+    
     addSubjectBtn->setFixedSize(280, 200);
     addSubjectBtn->setObjectName("addSubjectBtn");
 

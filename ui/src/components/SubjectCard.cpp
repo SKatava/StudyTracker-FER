@@ -2,20 +2,24 @@
 #include <QProgressBar>
 
 
-SubjectCard::SubjectCard(QWidget* parent) : QFrame(parent) {
-   setupUI(); 
+SubjectCard::SubjectCard(QWidget* parent, const Subject& subject) : QFrame(parent) {
+   setupUI(subject); 
 }
 
-void SubjectCard::setupUI() {
+void SubjectCard::setupUI(const Subject& subject) {
+    std::string name = subject.GetName().c_str();
+    std::string ECTS_ = std::to_string(subject.GetECTS()) + " ECTS";
+    std::string completition = std::to_string(subject.GetInvestedMinutes() / (subject.GetNeededMinutes()+1) * 100) + " Complete";
+
     layout          = new QVBoxLayout(this);
-    subjectTitle    = new QLabel("Matematička analiza");
-    ECTS            = new QLabel("8 ECTS");
-    percentage      = new QLabel("80% Complete");
+    subjectTitle    = new QLabel(name.c_str());
+    ECTS            = new QLabel(ECTS_.c_str());
+    percentage      = new QLabel(completition.c_str());
     startSessionBtn = new QPushButton("Start Session");
 
     QProgressBar* progressBar = new QProgressBar();
-    progressBar->setRange(0, 100);   // minimalna i maksimalna vrijednost
-    progressBar->setValue(80);        // početna vrijednost
+    progressBar->setRange(0, 100);
+    progressBar->setValue(subject.GetInvestedMinutes() / (subject.GetNeededMinutes()+1) * 100);        
     progressBar->setTextVisible(false);
     progressBar->setFixedHeight(10);
 

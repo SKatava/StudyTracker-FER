@@ -21,10 +21,9 @@ class Application : public QApplication {
         void loadWindowIcon();
         void loadAppContext();
             
-        MainWindow window;
-        
+        std::unique_ptr<MainWindow> window;
+
         Database database;
-        std::unique_ptr<AppContext> appContext;
 };
 
 #endif

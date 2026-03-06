@@ -3,6 +3,10 @@
 #include <QFontDatabase>
 #include <Fonts.h>
 #include <QIcon>
+#include <iostream>
+
+#include <core/domain/Subject.h>
+
 
 Application::Application(int& argc, char** argv) : QApplication(argc, argv) {
     loadStyles();
@@ -10,7 +14,8 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv) {
     loadWindowIcon();
     loadAppContext();
 
-    window.show();
+    window = std::make_unique<MainWindow>();
+    window->show();
 }
 
 int Application::Execute() {
@@ -41,6 +46,8 @@ void Application::loadWindowIcon() {
 }
 
 void Application::loadAppContext() {
+    database.InitializeSchema();
     auto subjectRepo = std::make_unique<SQLiteSubjectRepository>(database);
-    appContext = std::make_unique<AppContext>(std::move(subjectRepo));
+    AppContext::Initialize(std::move(subjectRepo));
 }
+

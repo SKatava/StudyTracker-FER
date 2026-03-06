@@ -7,12 +7,15 @@
 
 class AppContext {
     public:
+        static void Initialize(std::unique_ptr<ISubjectRepository> repo);
+        static AppContext& Instance();
         AppContext(std::unique_ptr<ISubjectRepository> subjectRepo);
         SubjectService& Subjects();
 
     private:
         std::unique_ptr<ISubjectRepository> m_subjectRepo;
         SubjectService m_subjectService;
+        static AppContext* instance;
 };
 
 #endif
