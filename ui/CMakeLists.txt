@@ -11,6 +11,8 @@ qt_add_executable(study_tracker
     include/layout/Sidebar.h
     src/layout/FlowLayout.cpp
     include/layout/FlowLayout.h
+    src/layout/AddSubjectForm.cpp
+    include/layout/AddSubjectForm.h
 
     #components
     src/components/SidebarBtn.cpp
@@ -23,6 +25,9 @@ qt_add_executable(study_tracker
     include/components/Header.h
     src/components/Logo.cpp
     include/components/Logo.h
+    include/components/CustomCalendar.h
+    src/components/CustomCalendar.cpp
+    include/components/DatePickerEdit.h
 
     #pages
     src/pages/DashboardPage.cpp

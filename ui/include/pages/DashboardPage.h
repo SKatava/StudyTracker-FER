@@ -32,6 +32,9 @@ private:
 
     QPushButton* addSubjectBtn;
     
+private slots:
+    void onAddButtonClicked();
+    void onSubjectCreated(QString name);
 };
 
 #endif

@@ -19,13 +19,43 @@ QPushButton:hover {
     border: 1px solid #191919;
 }
 
-#titlebar {
-    border: 1px solid #1a1a1a; 
+QLineEdit {
     background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 12px;
+    padding-left: 10px;
+}
+
+QLineEdit:focus {
+    border: 2px solid #3069c6;
+}
+
+QDateEdit {
+    subcontrol-origin: padding;
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+QDateEdit:focus {
+    border: 2px solid #3069c6;
+}
+
+QDateEdit:drop-down {
+    padding-right: 10px;
 }
 
 #logo QLabel {
     font-size: 24px;
+}
+
+#titlebar {
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;   
 }
 
 #titlebarBtn {
@@ -130,6 +160,41 @@ QProgressBar::chunk {
 
 #addSubjectBtn:hover {
     border: 1.5px dashed #ffffff;
-    color: #ffffff;
-    color: #ffffff;;
+    color: #c5c5c5;
+    color: #c5c5c5;
 }
+
+#addSubjectForm {
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#title {
+    font-size: 16px;
+}
+
+#secondaryText {
+    color: #5d5d5d;
+}
+
+#calendar {
+    background-color: #0c0c0c;
+}
+
+#calendarBtn {
+    background-color: #0c0c0c;
+    border: none;
+}
+
+#calendar QLabel {
+    font-size: 14px;
+    color: #c5c5c5 
+}
+
+#calendarBtn:hover {
+    background-color: #2069c6;
+}
+

@@ -19,7 +19,6 @@ void SubjectCard::setupUI(const Subject& subject) {
 
     QProgressBar* progressBar = new QProgressBar();
     progressBar->setRange(0, 100);
-    progressBar->setValue(subject.GetInvestedMinutes() / (subject.GetNeededMinutes()+1) * 100);        
     progressBar->setTextVisible(false);
     progressBar->setFixedHeight(10);
 
