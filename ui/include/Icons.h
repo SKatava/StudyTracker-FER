@@ -14,4 +14,7 @@ namespace Icons {
     const QString Leaderboard   = "\uf559";
     const QString Profile       = "\uf2bb";
     const QString Preferences   = "\uf013";
+    const QString Timer         = "\uf2f2";
+    const QString Clock         = "\uf017";
+    const QString CheckIn       = "\uf274";
 }

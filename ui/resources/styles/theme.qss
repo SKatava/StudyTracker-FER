@@ -31,6 +31,20 @@ QLineEdit:focus {
     border: 2px solid #3069c6;
 }
 
+QTextEdit {
+    selection-background-color: #2069c6;
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 12px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+QTextEdit:focus {
+    border: 2px solid #3069c6;
+}
+
 QComboBox {
     selection-background-color: #2069c6;
     background-color: #0c0c0c;
@@ -256,6 +270,29 @@ QProgressBar::chunk {
 #time[active="true"] {
     color: #2069c6;
 }
+
 #time[active="false"] {
+    color: #c5c5c5;
+}
+
+#menu {
+    border: none;
+    background-color: #191919;
+    border-radius: 12px;
+}
+
+#menu QLabel {
+    font-size: 18px;
+}
+
+#menuBtn {
+    border: none;
+    background-color: #191919;
+    color: #707070;
+}
+
+
+#menuBtn[active="true"] {
+    background-color: #2069c6;
     color: #c5c5c5;
 }

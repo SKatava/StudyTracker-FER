@@ -31,6 +31,10 @@ qt_add_executable(study_tracker
     src/components/DatePickerEdit.cpp
     include/components/StudyTimer.h
     src/components/StudyTimer.cpp
+    include/components/SessionPageMenu.h
+    src/components/SessionPageMenu.cpp
+    include/components/CustomBtn.h
+    src/components/CustomBtn.cpp
 
     #pages
     src/pages/DashboardPage.cpp

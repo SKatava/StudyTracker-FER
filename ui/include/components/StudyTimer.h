@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QComboBox>
 #include <QTimer>
+#include <QTextEdit>
 
 class StudyTimer : public QFrame {
     Q_OBJECT
@@ -23,6 +24,7 @@ private:
     QLabel* title;
     QLabel* time;
     QComboBox* subjectList;
+    QTextEdit* descriptionInput;
     QPushButton* startBtn;
     QPushButton* confirmBtn;
     QPushButton* cancelBtn;

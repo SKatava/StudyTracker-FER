@@ -17,6 +17,7 @@ void StudyTimer::setupUI() {
     title       = new QLabel("Study Timer");
     time        = new QLabel("00:00:00");
     subjectList = new QComboBox();
+    descriptionInput    = new QTextEdit();
     startBtn    = new QPushButton("Start");
     confirmBtn  = new QPushButton("Confirm");
     cancelBtn   = new QPushButton("Cancel");
@@ -36,6 +37,8 @@ void StudyTimer::setupUI() {
         subjectList->addItem(item.GetName().c_str());
     }
 
+    descriptionInput->setPlaceholderText("Enter the description of the session here ...");
+
     startBtn->setObjectName("goodBtn");
     startBtn->setFixedHeight(40);
     confirmBtn->setFixedHeight(40);
@@ -51,6 +54,7 @@ void StudyTimer::setupUI() {
 
     layout->addWidget(title, 0, Qt::AlignHCenter);
     layout->addWidget(subjectList);
+    layout->addWidget(descriptionInput);
     layout->addStretch();
     layout->addWidget(time, 0, Qt::AlignHCenter);
     layout->addStretch();
@@ -100,8 +104,10 @@ void StudyTimer::setupConnections() {
             time->style()->polish(time);
         }
 
+        if(elapsedSeconds < 60) return;
+
         int subjectIndex = subjectList->currentIndex();
-            
+         
         if(subjectIndex < 0) return;
 
         auto subjects = AppContext::Instance().Subjects().GetSubjects();
@@ -113,7 +119,7 @@ void StudyTimer::setupConnections() {
         QDate today = QDate::currentDate();
         QString dateString = today.toString("dd-MM-yyyy");
 
-        Session session {-1, subject.GetId(), minutes, "UNKNOWN", dateString.toStdString()};
+        Session session {-1, subject.GetId(), minutes, descriptionInput->toPlainText().toStdString(), dateString.toStdString()};
 
         AppContext::Instance().Subjects().UpdateSubject(subject);
         AppContext::Instance().Sessions().CreateSession(session);
