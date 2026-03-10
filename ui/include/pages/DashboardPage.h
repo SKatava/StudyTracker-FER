@@ -34,7 +34,7 @@ private:
     
 private slots:
     void onAddButtonClicked();
-    void onSubjectCreated(QString name);
+    void onSubjectCreated(const Subject& subject);
 };
 
 #endif

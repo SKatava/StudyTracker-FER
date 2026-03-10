@@ -12,10 +12,14 @@ void SubjectCard::setupUI(const Subject& subject) {
     std::string completition = std::to_string(subject.GetInvestedMinutes() / (subject.GetNeededMinutes()+1) * 100) + " Complete";
 
     layout          = new QVBoxLayout(this);
+    bottomLayout    = new QHBoxLayout();
     subjectTitle    = new QLabel(name.c_str());
     ECTS            = new QLabel(ECTS_.c_str());
     percentage      = new QLabel(completition.c_str());
+    lecture         = new QLabel("Lecture");
     startSessionBtn = new QPushButton("Start Session");
+    checkInBtn      = new QPushButton("Check In");
+    hoursInput      = new QLineEdit();
 
     QProgressBar* progressBar = new QProgressBar();
     progressBar->setRange(0, 100);
@@ -26,8 +30,17 @@ void SubjectCard::setupUI(const Subject& subject) {
     this->setFixedSize(300, 200);
     subjectTitle->setObjectName("subjectCardTitle");
     ECTS->setObjectName("subjectCardContent");
+    lecture->setObjectName("subjectCardContent");
 
-    startSessionBtn->setFixedSize(150, 50);
+    startSessionBtn->setObjectName("goodBtn");
+    startSessionBtn->setFixedHeight(30);
+    checkInBtn->setFixedHeight(30);
+    hoursInput->setFixedHeight(30);
+    hoursInput->setPlaceholderText("hr");
+
+    bottomLayout->addWidget(lecture, 1);
+    bottomLayout->addWidget(hoursInput, 1);
+    bottomLayout->addWidget(checkInBtn, 2);
 
     layout->addWidget(subjectTitle);
     layout->addStretch();
@@ -35,7 +48,8 @@ void SubjectCard::setupUI(const Subject& subject) {
     layout->addWidget(progressBar);
     layout->addWidget(percentage);
     layout->addStretch();
-    layout->addWidget(startSessionBtn, 0, Qt::AlignCenter);
+    layout->addWidget(startSessionBtn);
+    layout->addLayout(bottomLayout);
 }
 
 void SubjectCard::setupConnections() {

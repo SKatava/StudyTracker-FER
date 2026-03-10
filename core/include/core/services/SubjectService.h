@@ -11,6 +11,8 @@ class SubjectService {
         explicit SubjectService(ISubjectRepository& repo);
         int CreateSubject(const Subject& subject);
         std::vector<Subject> GetSubjects();
+        void UpdateSubject(const Subject& subject);
+        void RemoveSubject(int id);
     private:
         ISubjectRepository& m_repo;
 };

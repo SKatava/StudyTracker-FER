@@ -16,7 +16,7 @@ class Subject {
         // -------------------- Construction --------------------
         
         Subject() = default;
-        Subject(const std::string& name, uint8_t ECTS, uint8_t daysOfSemester);
+        Subject(const std::string& name, uint8_t ECTS, uint32_t lectureMinutes ,std::string endDate);
 
         Subject(const Subject&) = delete;
         Subject& operator=(const Subject&) = delete;
@@ -28,6 +28,7 @@ class Subject {
         
         // -------------------- Getters --------------------
 
+        [[nodiscard]] const int32_t GetId() const noexcept;
         [[nodiscard]] const std::string& GetName() const noexcept;
         [[nodiscard]] uint8_t GetECTS() const noexcept;
         [[nodiscard]] uint16_t GetDaysOfSemester() const noexcept;
@@ -84,7 +85,7 @@ class Subject {
         
         // -------------------- Internal Logic --------------------
         
-        void CalculateNeededHours();
+        void CalculateNeededMinutes();
 
 };
 

@@ -3,19 +3,20 @@
 
 // -------------------- Construction --------------------
 
-
-
-Subject::Subject(const std::string& name, uint8_t ECTS, uint8_t daysOfSemester) :
-    m_name              (name), 
-    m_ECTS              (ECTS), 
-    m_daysOfSemester    (daysOfSemester) 
+Subject::Subject(const std::string& name, uint8_t ECTS, uint32_t lectureMinutes ,std::string endDate)
+    :   m_name(name),
+        m_ECTS(ECTS),
+        m_lectureMinutesNeeded(lectureMinutes),
+        m_endDate(endDate)
 {
-    CalculateNeededHours();
+    CalculateNeededMinutes();    
 }
 
-
-
 // -------------------- Getters --------------------
+
+const int32_t Subject::GetId() const noexcept {
+    return m_id;
+}
 
 const std::string& Subject::GetName() const noexcept {
     return m_name;
@@ -98,8 +99,8 @@ void Subject::SetDaysOfSemester(uint8_t daysOfSemester) {
 
 // -------------------- Internal Logic --------------------
 
-void Subject::CalculateNeededHours() {
-    m_studyMinutesNeeded = MIN_HOURS_PER_ECTS * 60 * 25; 
+void Subject::CalculateNeededMinutes() {
+    m_studyMinutesNeeded = (MIN_HOURS_PER_ECTS + MAX_HOURS_PER_ECTS) / 2 * 60 * m_ECTS - m_lectureMinutesNeeded; 
 }
 
 

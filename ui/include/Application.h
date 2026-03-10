@@ -10,6 +10,7 @@
 #include <core/services/AppContext.h>
 #include <backend/sqlite/Database.h>
 #include <backend/sqlite/SQLiteSubjectRepository.h>
+#include <backend/sqlite/SQLiteSessionRepository.h>
 
 class Application : public QApplication {
     public:

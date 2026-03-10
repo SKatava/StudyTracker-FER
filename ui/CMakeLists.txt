@@ -28,6 +28,9 @@ qt_add_executable(study_tracker
     include/components/CustomCalendar.h
     src/components/CustomCalendar.cpp
     include/components/DatePickerEdit.h
+    src/components/DatePickerEdit.cpp
+    include/components/StudyTimer.h
+    src/components/StudyTimer.cpp
 
     #pages
     src/pages/DashboardPage.cpp

@@ -48,6 +48,7 @@ void Application::loadWindowIcon() {
 void Application::loadAppContext() {
     database.InitializeSchema();
     auto subjectRepo = std::make_unique<SQLiteSubjectRepository>(database);
-    AppContext::Initialize(std::move(subjectRepo));
+    auto sessionRepo = std::make_unique<SQLiteSessionRepository>(database);
+    AppContext::Initialize(std::move(subjectRepo), std::move(sessionRepo));
 }
 

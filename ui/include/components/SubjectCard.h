@@ -8,6 +8,7 @@
 #include <QPushButton>
 
 #include <core/domain/Subject.h>
+#include <QLineEdit>
 
 class SubjectCard : public QFrame {
     Q_OBJECT
@@ -20,10 +21,14 @@ private:
     void setupConnections();
 
     QVBoxLayout* layout;
+    QHBoxLayout* bottomLayout;
     QLabel* subjectTitle;
     QLabel* ECTS;
     QLabel* percentage;
+    QLabel* lecture;
     QPushButton* startSessionBtn;
+    QPushButton* checkInBtn;
+    QLineEdit* hoursInput;
 
 
 };

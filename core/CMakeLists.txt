@@ -5,6 +5,8 @@ target_sources(${NAME} PRIVATE
 
     src/services/AppContext.cpp
     src/services/SubjectService.cpp
+    src/services/SessionService.cpp
+    
 )
 
 target_include_directories(${NAME}

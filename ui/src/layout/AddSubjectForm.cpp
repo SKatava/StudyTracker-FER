@@ -88,7 +88,8 @@ void AddSubjectForm::setupUI() {
 
 void AddSubjectForm::setupConnections() {
     connect(addBtn, &QPushButton::clicked, this, [this]() {
-        emit subjectCreated(nameInput->text());
+        Subject sub = getSubject();
+        emit subjectCreated(sub);
         close();
     });
 
@@ -96,5 +97,10 @@ void AddSubjectForm::setupConnections() {
 }
 
 Subject AddSubjectForm::getSubject() const {
-    
+    QString new_name = nameInput->text();
+    int new_ECTS = ECTSInput->text().toInt();
+    int new_lectureHours = LectureHoursInput->text().toInt();
+    QString new_endDate = dateInput->date().toString("dd-MM-yyyy");
+    Subject subject(new_name.toStdString(), new_ECTS, new_lectureHours* 60, new_endDate.toStdString());
+    return subject;
 }

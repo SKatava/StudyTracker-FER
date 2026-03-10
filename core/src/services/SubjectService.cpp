@@ -11,3 +11,11 @@ int SubjectService::CreateSubject(const Subject& subject) {
 std::vector<Subject> SubjectService::GetSubjects() {
     return m_repo.GetAll();
 }
+
+void SubjectService::UpdateSubject(const Subject& subject) {
+    m_repo.Update(subject);
+}
+
+void SubjectService::RemoveSubject(int id) {
+    m_repo.Remove(id);
+}

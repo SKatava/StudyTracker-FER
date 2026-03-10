@@ -52,14 +52,11 @@ void DashboardPage::onAddButtonClicked() {
             this, &DashboardPage::onSubjectCreated);
 }
 
-void DashboardPage::onSubjectCreated(QString name)
-{
+void DashboardPage::onSubjectCreated(const Subject& subject) {
     auto& service = AppContext::Instance().Subjects();
-    Subject subject;
-    subject.SetName(name.toStdString());
 
-    service.CreateSubject(subject);
-
+    int id = service.CreateSubject(subject);
+    
     auto subjects = service.GetSubjects();
     auto& item = subjects.back();
 

@@ -1,8 +1,9 @@
 set(NAME study_tracker-backend)
 add_library(${NAME} STATIC)
 target_sources(${NAME} PRIVATE
-    src/sqlite/SQLiteSubjectRepository.cpp
     src/sqlite/Database.cpp
+    src/sqlite/SQLiteSubjectRepository.cpp
+    src/sqlite/SQLiteSessionRepository.cpp
 )
 
 target_include_directories(${NAME}

@@ -43,7 +43,7 @@ private:
     QPushButton* addBtn;
     QPushButton* cancelBtn;
 signals:
-    void subjectCreated(QString name);
+    void subjectCreated(const Subject& subject);
 
 };
 

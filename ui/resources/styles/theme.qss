@@ -31,6 +31,37 @@ QLineEdit:focus {
     border: 2px solid #3069c6;
 }
 
+QComboBox {
+    selection-background-color: #2069c6;
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 12px;
+    padding-left: 10px;
+}
+
+QComboBox:focus {
+    border: 2px solid #3069c6;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    color: #c5c5c5;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    width: 10px;
+    border-left-width: 1px;
+}
+
+QComboBox::down-arrow {
+    image: none;
+}
+
+
 QDateEdit {
     subcontrol-origin: padding;
     background-color: #0c0c0c;
@@ -153,20 +184,19 @@ QProgressBar::chunk {
 
 #addSubjectBtn {
     background-color: #0c0c0c;
-    color: #5d5d5d;
-    border: 1.5px dashed #1a1a1a;
+    color: #292929;
+    border: 1.5px dashed #292929;
     font-size: 24px;
 }
 
 #addSubjectBtn:hover {
-    border: 1.5px dashed #ffffff;
-    color: #c5c5c5;
-    color: #c5c5c5;
+    border: 1.5px dashed #8c8c8c;
+    color: #8c8c8c;
 }
 
 #addSubjectForm {
     background-color: #0c0c0c;
-    border: 1px solid #1a1a1a;
+    border: 1.25px solid #1a1a1a;
     color: #c5c5c5;
     border-radius: 8px;
     padding: 10px;
@@ -198,3 +228,34 @@ QProgressBar::chunk {
     background-color: #2069c6;
 }
 
+#goodBtn {
+    background-color: #2069c6;
+}
+
+#goodBtn:hover {
+    background-color: #1a57a6;
+}
+
+#studyTimer {
+    background-color: #0c0c0c;
+    border: 1.25px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#studyTimerTitle {
+    color: #5d5d5d;
+    font-size: 24px;
+}
+
+#time {
+    font-size: 128px;
+}
+
+#time[active="true"] {
+    color: #2069c6;
+}
+#time[active="false"] {
+    color: #c5c5c5;
+}
