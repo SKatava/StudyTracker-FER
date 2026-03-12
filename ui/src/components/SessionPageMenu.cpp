@@ -35,12 +35,15 @@ void SessionPageMenu::setupUI() {
 void SessionPageMenu::setupConnections() {
     connect(newSessionBtn, &QPushButton::clicked, this, [this]() {
         setActiveButton(newSessionBtn);
+        emit navigateTo("Timer");
     });
     connect(historyBtn, &QPushButton::clicked, this, [this]() {
         setActiveButton(historyBtn);
+        emit navigateTo("History");
     });
     connect(lectureCheckInBtn, &QPushButton::clicked, this, [this]() {
         setActiveButton(lectureCheckInBtn);
+        emit navigateTo("Lecture Check In");
     });
 }
 

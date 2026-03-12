@@ -21,6 +21,7 @@ public:
 private:
     void setupUI();
     void setupConnections();
+    void refreshSubjects();
 
     QVBoxLayout* rootLayout;
     FlowLayout* activeSubjectsLayout;

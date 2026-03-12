@@ -30,6 +30,8 @@ private:
     QPushButton* checkInBtn;
     QLineEdit* hoursInput;
 
+    int subjectId;
+
 
 };
 

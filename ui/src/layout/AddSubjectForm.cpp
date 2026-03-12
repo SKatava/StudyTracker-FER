@@ -1,6 +1,8 @@
 #include <layout/AddSubjectForm.h>
 
 #include <components/DatePickerEdit.h>
+#include <events/SubjectEvent.h>
+
 
 AddSubjectForm::AddSubjectForm(QWidget* parent)
     : QWidget(parent)
@@ -89,7 +91,7 @@ void AddSubjectForm::setupUI() {
 void AddSubjectForm::setupConnections() {
     connect(addBtn, &QPushButton::clicked, this, [this]() {
         Subject sub = getSubject();
-        emit subjectCreated(sub);
+        emit SubjectEvents::instance().subjectCreated(sub);
         close();
     });
 

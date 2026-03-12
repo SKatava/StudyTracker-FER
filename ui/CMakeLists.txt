@@ -14,6 +14,9 @@ qt_add_executable(study_tracker
     src/layout/AddSubjectForm.cpp
     include/layout/AddSubjectForm.h
 
+    #events
+    include/events/SubjectEvent.h
+
     #components
     src/components/SidebarBtn.cpp
     include/components/SidebarBtn.h

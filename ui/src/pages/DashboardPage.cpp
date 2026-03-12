@@ -1,6 +1,7 @@
 #include <pages/DashboardPage.h>
 #include <layout/AddSubjectForm.h>
 #include <core/services/AppContext.h>
+#include <events/SubjectEvent.h>
 
 DashboardPage::DashboardPage(QWidget* parent) : QWidget(parent) {
     setupUI();
@@ -34,6 +35,29 @@ void DashboardPage::setupUI() {
 
 void DashboardPage::setupConnections() {
     connect(addSubjectBtn, &QPushButton::clicked, this, &DashboardPage::onAddButtonClicked);
+    connect(&SubjectEvents::instance(), &SubjectEvents::subjectCreated, this, &DashboardPage::onSubjectCreated);
+
+}
+
+void DashboardPage::refreshSubjects() {
+    QLayoutItem* item;
+    while ((item = activeSubjectsLayout->takeAt(0)) != nullptr)
+    {
+        QWidget* w = item->widget();
+        if (w && w != addSubjectBtn)
+            delete w;
+        delete item;
+    } 
+
+    auto subjects = AppContext::Instance().Subjects().GetSubjects();
+
+    for(auto& item : subjects) {
+        SubjectCard* card = new SubjectCard(nullptr, item);
+        activeSubjectsLayout->addWidget(card);
+    }
+
+    activeSubjectsLayout->addWidget(addSubjectBtn);
+
 }
 
 void DashboardPage::onAddButtonClicked() {
@@ -47,9 +71,6 @@ void DashboardPage::onAddButtonClicked() {
 
     form->show();
     form->raise();
-
-    connect(form, &AddSubjectForm::subjectCreated,
-            this, &DashboardPage::onSubjectCreated);
 }
 
 void DashboardPage::onSubjectCreated(const Subject& subject) {
@@ -58,10 +79,6 @@ void DashboardPage::onSubjectCreated(const Subject& subject) {
     int id = service.CreateSubject(subject);
     
     auto subjects = service.GetSubjects();
-    auto& item = subjects.back();
-
-    SubjectCard* card = new SubjectCard(nullptr, item);
-    activeSubjectsLayout->removeWidget(addSubjectBtn);
-    activeSubjectsLayout->addWidget(card);
-    activeSubjectsLayout->addWidget(addSubjectBtn);
+    
+    refreshSubjects();
 }

@@ -30,6 +30,9 @@ private:
     QPushButton* cancelBtn;
     QTimer* timer;
     int elapsedSeconds {0};
+
+private slots:
+    void onSubjectCreated();
 };
 
 #endif

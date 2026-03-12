@@ -1,9 +1,12 @@
 #include <components/SubjectCard.h>
 #include <QProgressBar>
 
+#include <core/services/AppContext.h>
 
 SubjectCard::SubjectCard(QWidget* parent, const Subject& subject) : QFrame(parent) {
-   setupUI(subject); 
+   setupUI(subject);
+   setupConnections();
+   subjectId= subject.GetId();
 }
 
 void SubjectCard::setupUI(const Subject& subject) {
@@ -27,7 +30,7 @@ void SubjectCard::setupUI(const Subject& subject) {
     progressBar->setFixedHeight(10);
 
     this->setObjectName("subjectCard");
-    this->setFixedSize(300, 200);
+    this->setFixedSize(300, 250);
     subjectTitle->setObjectName("subjectCardTitle");
     ECTS->setObjectName("subjectCardContent");
     lecture->setObjectName("subjectCardContent");
@@ -49,9 +52,21 @@ void SubjectCard::setupUI(const Subject& subject) {
     layout->addWidget(percentage);
     layout->addStretch();
     layout->addWidget(startSessionBtn);
+    layout->addSpacing(10);
     layout->addLayout(bottomLayout);
 }
 
 void SubjectCard::setupConnections() {
-    
+    connect(checkInBtn, &QPushButton::clicked, this, [this]() {
+        int hours = hoursInput->text().toInt();
+        hoursInput->setText(0);
+
+        auto subjects = AppContext::Instance().Subjects().GetSubjects();
+        for(auto& item : subjects) {
+            if(item.GetId() == subjectId) {
+                item.SetInvestedLectureMinutes(item.GetInvestedLectureMinutes() + hours * 60);
+                AppContext::Instance().Subjects().UpdateSubject(item);
+            }
+        }
+    }); 
 }

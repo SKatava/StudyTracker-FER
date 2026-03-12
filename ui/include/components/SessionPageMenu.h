@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLayout>
+#include <QString>
 
 #include <components/CustomBtn.h>
 
@@ -26,6 +27,9 @@ private:
     CustomBtn* historyBtn;
     CustomBtn* lectureCheckInBtn;
     CustomBtn* activeBtn {nullptr};
+
+signals:
+    void navigateTo(QString page);
 
 };
 

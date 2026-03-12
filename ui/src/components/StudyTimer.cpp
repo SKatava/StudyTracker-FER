@@ -5,6 +5,7 @@
 #include <core/services/AppContext.h>
 #include <core/domain/Session.h>
 
+#include <events/SubjectEvent.h>
 
 StudyTimer::StudyTimer(QWidget* parent) : QFrame(parent)  {
     setupUI();    
@@ -140,4 +141,15 @@ void StudyTimer::setupConnections() {
         time->setText("00:00:00");
     });
 
+
+    connect(&SubjectEvents::instance(), &SubjectEvents::subjectCreated, this, &StudyTimer::onSubjectCreated);
+}
+
+void StudyTimer::onSubjectCreated() {
+    subjectList->clear();
+    auto subjects = AppContext::Instance().Subjects().GetSubjects();
+
+    for(auto& item : subjects) {
+        subjectList->addItem(item.GetName().c_str());
+    }
 }
