@@ -26,7 +26,7 @@ void DatePickerEdit::setupUI() {
 
 void DatePickerEdit::setupConnections() {
     connect(openCalendarBtn, &QPushButton::clicked, [this](){
-        calendar->move(mapToGlobal(QPoint(0,height()))); // show below
+        calendar->move(mapToGlobal(QPoint(0,height()))); 
         calendar->show();
     });
 

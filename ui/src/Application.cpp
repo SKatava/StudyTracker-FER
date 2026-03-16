@@ -3,7 +3,6 @@
 #include <QFontDatabase>
 #include <Fonts.h>
 #include <QIcon>
-#include <iostream>
 
 #include <core/domain/Subject.h>
 

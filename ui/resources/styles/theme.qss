@@ -94,6 +94,15 @@ QDateEdit:drop-down {
     padding-right: 10px;
 }
 
+QScrollArea {
+    background-color: #000000;
+    border: none;
+}
+
+QScrollArea QWidget {
+    background-color: transparent; 
+}
+
 #logo QLabel {
     font-size: 24px;
 }
@@ -221,7 +230,12 @@ QProgressBar::chunk {
 }
 
 #secondaryText {
+    font-size: 14px;
     color: #5d5d5d;
+}
+
+#primaryText {
+    font-size: 16px;
 }
 
 #calendar {
@@ -295,4 +309,28 @@ QProgressBar::chunk {
 #menuBtn[active="true"] {
     background-color: #2069c6;
     color: #c5c5c5;
+}
+
+#sessionCard {
+    border-radius: 8px;
+    background-color: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    margin-right: 20px;
+}
+
+#sessionIcon {
+    border-radius: 8px;
+    background-color: #0f151e;
+    color: #2069c6;
+    font-size: 24px;
+}
+
+#newLogBtn {
+    background-color: #0c0c0c;
+    font-size: 18px;
+    color: #c5c5c5;
+}
+
+#newLogBtn:hover {
+    background-color: #2069c6;
 }

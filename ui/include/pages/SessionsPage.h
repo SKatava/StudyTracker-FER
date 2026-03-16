@@ -7,6 +7,8 @@
 
 #include <components/StudyTimer.h>
 #include <components/SessionPageMenu.h>
+#include <components/SessionCard.h>
+#include <layout/SessionHistory.h>
 
 class SessionsPage : public QWidget {
     Q_OBJECT
@@ -20,10 +22,11 @@ private:
        
     QVBoxLayout* layout;
     StudyTimer* timer;
-    QWidget* history;
+    SessionHistory* history;
     QWidget* lectureCheckIn;
     SessionPageMenu* menu;
     
+    SessionCard* card;
 
     QStackedWidget* pages;
     QMap<QString, QWidget*> pageMap;

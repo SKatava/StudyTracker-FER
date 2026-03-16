@@ -13,6 +13,8 @@ qt_add_executable(study_tracker
     include/layout/FlowLayout.h
     src/layout/AddSubjectForm.cpp
     include/layout/AddSubjectForm.h
+    src/layout/SessionHistory.cpp
+    include/layout/SessionHistory.h
 
     #events
     include/events/SubjectEvent.h
@@ -38,6 +40,10 @@ qt_add_executable(study_tracker
     src/components/SessionPageMenu.cpp
     include/components/CustomBtn.h
     src/components/CustomBtn.cpp
+    include/components/SessionCard.h
+    src/components/SessionCard.cpp
+    include/components/SessionHistoryMenu.h
+    src/components/SessionHistoryMenu.cpp
 
     #pages
     src/pages/DashboardPage.cpp

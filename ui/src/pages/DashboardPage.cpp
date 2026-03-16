@@ -61,7 +61,6 @@ void DashboardPage::refreshSubjects() {
 }
 
 void DashboardPage::onAddButtonClicked() {
-
     AddSubjectForm* form = new AddSubjectForm(this);
 
     form->move(

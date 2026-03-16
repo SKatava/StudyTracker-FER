@@ -9,32 +9,32 @@ SessionPageMenu::SessionPageMenu(QWidget* parent) : QFrame(parent) {
 
 void SessionPageMenu::setupUI() {
     layout              = new QHBoxLayout(this);
-    newSessionBtn       = new CustomBtn(Icons::Timer, "New Session");
+    timerBtn       = new CustomBtn(Icons::Timer, "Study Timer");
     historyBtn          = new CustomBtn(Icons::Clock, "History");
     lectureCheckInBtn   = new CustomBtn(Icons::CheckIn, "Lecture Check In");
     
     setFixedSize(600, 60);
     setObjectName("menu");
 
-    setActiveButton(newSessionBtn);
+    setActiveButton(timerBtn);
 
 
-    newSessionBtn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+    timerBtn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     historyBtn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
     lectureCheckInBtn->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
 
-    newSessionBtn->setObjectName("menuBtn");
+    timerBtn->setObjectName("menuBtn");
     historyBtn->setObjectName("menuBtn");
     lectureCheckInBtn->setObjectName("menuBtn");
 
-    layout->addWidget(newSessionBtn);
+    layout->addWidget(timerBtn);
     layout->addWidget(historyBtn);
     layout->addWidget(lectureCheckInBtn);
 }
 
 void SessionPageMenu::setupConnections() {
-    connect(newSessionBtn, &QPushButton::clicked, this, [this]() {
-        setActiveButton(newSessionBtn);
+    connect(timerBtn, &QPushButton::clicked, this, [this]() {
+        setActiveButton(timerBtn);
         emit navigateTo("Timer");
     });
     connect(historyBtn, &QPushButton::clicked, this, [this]() {

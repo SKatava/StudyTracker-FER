@@ -17,4 +17,5 @@ namespace Icons {
     const QString Timer         = "\uf2f2";
     const QString Clock         = "\uf017";
     const QString CheckIn       = "\uf274";
+    const QString Add           = "\uf067";
 }

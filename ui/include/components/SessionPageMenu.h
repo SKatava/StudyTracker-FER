@@ -23,7 +23,7 @@ private:
 
     QHBoxLayout* layout; 
 
-    CustomBtn* newSessionBtn;
+    CustomBtn* timerBtn;
     CustomBtn* historyBtn;
     CustomBtn* lectureCheckInBtn;
     CustomBtn* activeBtn {nullptr};

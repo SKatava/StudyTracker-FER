@@ -1,6 +1,7 @@
 #include <pages/SessionsPage.h>
 #include <QLayout>
 #include <QFrame>
+#include <QScrollArea>
 
 #include <components/StudyTimer.h>
 #include <components/SessionPageMenu.h>
@@ -15,17 +16,18 @@ void SessionsPage::setupUI() {
     timer           = new StudyTimer();
     menu            = new SessionPageMenu();
     pages           = new QStackedWidget(); 
-    history         = new QWidget();
+    history         = new SessionHistory();
     lectureCheckIn  = new QWidget();
+
 
     pages->addWidget(timer);
     pages->addWidget(history);
     pages->addWidget(lectureCheckIn);
 
-    layout->addStretch();
+    layout->addSpacing(50);
     layout->addWidget(menu, 0, Qt::AlignCenter);
     layout->addSpacing(50);
-    layout->addWidget(pages, 0, Qt::AlignHCenter);
+    layout->addWidget(pages, 1, Qt::AlignHCenter);
     layout->addStretch();
 }
 

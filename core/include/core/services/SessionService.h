@@ -11,8 +11,10 @@ class SessionService {
         explicit SessionService(ISessionRepository& repo);
         int CreateSession(const Session& session);
         std::vector<Session> GetSessions();
+        std::vector<Session> GetSessionsSortedByDate();
         void UpdateSession(const Session& session);
         void RemoveSession(int id);
+
     private:
         ISessionRepository& m_repo;
 };
