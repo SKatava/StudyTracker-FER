@@ -9,7 +9,6 @@ SessionHistoryMenu::SessionHistoryMenu(QWidget* parent) : QWidget(parent) {
     setupConnections();
 }
 
-
 void SessionHistoryMenu::setupUI() {
     layout = new QHBoxLayout(this);
     newLogBtn = new CustomBtn(Icons::Add, "New Log");
@@ -29,9 +28,13 @@ void SessionHistoryMenu::setupUI() {
 
     layout->addWidget(subjectFilter, 4);
     layout->addWidget(newLogBtn, 2);
-
 }
 
 void SessionHistoryMenu::setupConnections() {
-
+    connect(subjectFilter, &QComboBox::currentIndexChanged, this, [this]() {
+        emit filterApplied(subjectFilter->currentText());
+    });
+    connect(newLogBtn, &QPushButton::clicked, this, [this]() {
+        emit openSessionForm();
+    });
 }

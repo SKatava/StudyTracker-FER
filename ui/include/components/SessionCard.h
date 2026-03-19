@@ -14,7 +14,7 @@ class SessionCard : public QFrame {
 
 public:
     SessionCard(QWidget* parent, const Session& session);
-
+    QString getSubjectName();
 private:
     void setupUI(const Session& session);
     void setupConnections();

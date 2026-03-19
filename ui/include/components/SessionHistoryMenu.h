@@ -21,6 +21,10 @@ private:
     CustomBtn* newLogBtn;
     QComboBox* subjectFilter;
 
+signals:
+    void filterApplied(QString name);
+    void openSessionForm();
+
 };
 
 #endif

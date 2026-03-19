@@ -12,7 +12,7 @@ SubjectCard::SubjectCard(QWidget* parent, const Subject& subject) : QFrame(paren
 void SubjectCard::setupUI(const Subject& subject) {
     std::string name = subject.GetName().c_str();
     std::string ECTS_ = std::to_string(subject.GetECTS()) + " ECTS";
-    std::string completition = std::to_string(subject.GetInvestedMinutes() / (subject.GetNeededMinutes()+1) * 100) + " Complete";
+    std::string completition = std::to_string((int)(subject.GetInvestedMinutes()*1.f / (subject.GetNeededMinutes()+1) * 100)) + "% Complete";
 
     layout          = new QVBoxLayout(this);
     bottomLayout    = new QHBoxLayout();
@@ -27,6 +27,7 @@ void SubjectCard::setupUI(const Subject& subject) {
     QProgressBar* progressBar = new QProgressBar();
     progressBar->setRange(0, 100);
     progressBar->setTextVisible(false);
+    progressBar->setValue(subject.GetInvestedMinutes()*1.f / (subject.GetNeededMinutes()+1) * 100);
     progressBar->setFixedHeight(10);
 
     this->setObjectName("subjectCard");

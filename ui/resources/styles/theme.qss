@@ -334,3 +334,11 @@ QProgressBar::chunk {
 #newLogBtn:hover {
     background-color: #2069c6;
 }
+
+#addSessionForm {
+    background-color: #0c0c0c;
+    border: 1.25px solid #1a1a1a;
+    color: #c5c5c5;
+    border-radius: 8px;
+    padding: 10px;
+}

@@ -3,8 +3,6 @@
 #include <QScrollBar>
 
 #include <core/services/AppContext.h>
-#include <components/SessionHistoryMenu.h>
-
 
 SessionHistory::SessionHistory(QWidget* parent) : QWidget(parent) {
     setupUI();
@@ -12,33 +10,33 @@ SessionHistory::SessionHistory(QWidget* parent) : QWidget(parent) {
 }
 
 void SessionHistory::setupUI() {
-    SessionHistoryMenu* menu = new SessionHistoryMenu();
+    menu = new SessionHistoryMenu();
+    sessionForm = new AddSessionForm();
+
     layout = new QVBoxLayout(this);
     layout->setSpacing(10);
     layout->setContentsMargins(0,0,0,0);
 
     scroll = new QScrollArea();
-    scroll->setContentsMargins(0,0,0,0);
     scroll->setWidgetResizable(true);
     scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     scroll->viewport()->setFixedWidth(620);
 
-    QWidget* container = new QWidget();
-    QVBoxLayout* containerLayout = new QVBoxLayout(container);
-    container->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Expanding);
-    container->setMinimumWidth(scroll->viewport()->width());
+    container = new QWidget();
+    containerLayout = new QVBoxLayout(container);
     containerLayout->setSpacing(10);
     containerLayout->setContentsMargins(0,0,0,0);
 
     auto sessions = AppContext::Instance().Sessions().GetSessionsSortedByDate();
 
-    for(auto& item : sessions) {
+    for (auto& item : sessions) {
         SessionCard* card = new SessionCard(nullptr, item);
         containerLayout->addWidget(card);
+        cards.push_back(card);  
     }
 
-    containerLayout->addStretch(); 
+    containerLayout->addStretch();
 
     scroll->setWidget(container);
 
@@ -47,5 +45,30 @@ void SessionHistory::setupUI() {
 }
 
 void SessionHistory::setupConnections() {
-    
+    connect(menu, &SessionHistoryMenu::filterApplied, this, &SessionHistory::onFilterApplied);
+    connect(menu, &SessionHistoryMenu::openSessionForm, this, &SessionHistory::onOpenSessionForm);
+
+}
+
+void SessionHistory::onFilterApplied(QString name) {
+    for (auto* card : cards) {
+        if (name == "All" ||
+            card->getSubjectName().compare(name, Qt::CaseInsensitive) == 0) {
+            card->show();
+        } else {
+            card->hide();
+        }
+    }
+}
+
+void SessionHistory::onOpenSessionForm() {
+    AddSessionForm* form = new AddSessionForm(this);
+
+    form->move(
+        (width() - form->width()) / 2,
+        (height() - form->height()) / 2
+    );
+
+    form->show();
+    form->raise();
 }

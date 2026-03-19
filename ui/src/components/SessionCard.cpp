@@ -11,6 +11,11 @@ SessionCard::SessionCard(QWidget* parent, const Session& session) : QFrame(paren
     setupConnections();
 }
     
+QString SessionCard::getSubjectName() {
+    return subjectName->text();
+}
+
+
 void SessionCard::setupUI(const Session& session) {
     layout = new QHBoxLayout(this);
     subjectName = new QLabel("lol");
