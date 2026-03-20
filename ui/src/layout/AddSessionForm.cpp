@@ -41,27 +41,41 @@ void AddSessionForm::setupUI() {
     buttonLayout->addStretch();
     buttonLayout->addWidget(cancelBtn);
     buttonLayout->addWidget(confirmBtn);
+    
+    QLabel* label = new QLabel("Duration");
+    label->setObjectName("secondaryText");
+    labelLayout->addWidget(label);
 
-    labelLayout->addWidget(new QLabel("Duration"));
-    labelLayout->addWidget(new QLabel("Date"));
+    label = new QLabel("Date");
+    label->setObjectName("secondaryText");
+    labelLayout->addWidget(label);
     labelLayout->setSpacing(20);
 
     inputLayout->addWidget(minutesInput);
     inputLayout->addWidget(dateInput);
-    inputLayout->setSpacing(20);
+    inputLayout->setSpacing(10);
 
-    layout->addWidget(new QLabel("Add New Session"));
+    label = new QLabel("Add New Session");
+    label->setObjectName("title");
+    layout->addWidget(label);
+    layout->addSpacing(5);
+
+    label = new QLabel("Enter the session details below.");
+    label->setObjectName("secondaryText");
+    layout->addWidget(label);
     layout->addSpacing(10);
-    layout->addWidget(new QLabel("Enter the session details below."));
-    layout->addSpacing(20);
 
-    layout->addWidget(new QLabel("Subject"));
+    label = new QLabel("Subject");
+    label->setObjectName("secondaryText");
+    layout->addWidget(label);
     layout->addWidget(subjectList);
-    layout->addSpacing(20);
+    layout->addSpacing(10);
 
-    layout->addWidget(new QLabel("Description"));
+    label = new QLabel("Description");
+    label->setObjectName("secondaryText");
+    layout->addWidget(label);
     layout->addWidget(descInput);
-    layout->addSpacing(20);
+    layout->addSpacing(10);
     
     layout->addLayout(labelLayout);
     layout->addLayout(inputLayout);
