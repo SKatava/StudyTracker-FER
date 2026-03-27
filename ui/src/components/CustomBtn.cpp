@@ -16,7 +16,7 @@ CustomBtn::CustomBtn(const QString& icon, const QString& content) : QPushButton(
     this->content = new QLabel(content);
 
     this->icon->setFont(iconFont);
-    
+
     layout->addStretch();
     layout->addWidget(this->icon);
     layout->addWidget(this->content);

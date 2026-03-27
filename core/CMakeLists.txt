@@ -6,6 +6,7 @@ target_sources(${NAME} PRIVATE
     src/services/AppContext.cpp
     src/services/SubjectService.cpp
     src/services/SessionService.cpp
+    src/services/TaskService.cpp
     
 )
 
@@ -17,6 +18,6 @@ target_include_directories(${NAME}
 )
 
 target_link_libraries(${NAME} PRIVATE
-    SQLite::SQLite3 
+    SQLite3::SQLite3 
 )
 

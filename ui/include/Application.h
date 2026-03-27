@@ -11,6 +11,7 @@
 #include <backend/sqlite/Database.h>
 #include <backend/sqlite/SQLiteSubjectRepository.h>
 #include <backend/sqlite/SQLiteSessionRepository.h>
+#include <backend/sqlite/SQLiteTaskRepository.h>
 
 class Application : public QApplication {
     public:

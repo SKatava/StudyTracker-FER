@@ -1,7 +1,6 @@
 #include <components/StudyTimer.h>
 #include <QListView>
 #include <QDate>
-
 #include <core/services/AppContext.h>
 #include <core/domain/Session.h>
 
@@ -124,7 +123,6 @@ void StudyTimer::setupConnections() {
 
         AppContext::Instance().Subjects().UpdateSubject(subject);
         AppContext::Instance().Sessions().CreateSession(session);
-        
         elapsedSeconds = 0;
         time->setText("00:00:00");
     });

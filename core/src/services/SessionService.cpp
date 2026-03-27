@@ -18,9 +18,9 @@ std::vector<Session> SessionService::GetSessionsSortedByDate() {
     auto sessions = m_repo.GetAll();
 
     std::sort(sessions.begin(), sessions.end(), [](const Session& a, const Session& b) {
-        if(a.GetYear() != b.GetYear()) return a.GetYear() < b.GetYear();
-        if(a.GetMonth() != b.GetMonth()) return a.GetMonth() < b.GetMonth();
-        return a.GetDay() < b.GetDay();
+        if(a.GetYear() != b.GetYear()) return a.GetYear() > b.GetYear();
+        if(a.GetMonth() != b.GetMonth()) return a.GetMonth() > b.GetMonth();
+        return a.GetDay() > b.GetDay();
      });
 
     return sessions;

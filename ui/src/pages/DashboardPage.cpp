@@ -36,7 +36,7 @@ void DashboardPage::setupUI() {
 void DashboardPage::setupConnections() {
     connect(addSubjectBtn, &QPushButton::clicked, this, &DashboardPage::onAddButtonClicked);
     connect(&SubjectEvents::instance(), &SubjectEvents::subjectCreated, this, &DashboardPage::onSubjectCreated);
-
+    int i = 0;
 }
 
 void DashboardPage::refreshSubjects() {

@@ -4,6 +4,7 @@ target_sources(${NAME} PRIVATE
     src/sqlite/Database.cpp
     src/sqlite/SQLiteSubjectRepository.cpp
     src/sqlite/SQLiteSessionRepository.cpp
+    src/sqlite/SQLiteTaskRepository.cpp
 )
 
 target_include_directories(${NAME}
@@ -15,5 +16,5 @@ target_include_directories(${NAME}
 
 target_link_libraries(${NAME} PRIVATE
     study_tracker-core
-    SQLite::SQLite3 
+    SQLite3::SQLite3 
 )
