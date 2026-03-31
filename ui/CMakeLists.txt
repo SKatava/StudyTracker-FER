@@ -47,6 +47,10 @@ qt_add_executable(study_tracker
     src/components/SessionCard.cpp
     include/components/SessionHistoryMenu.h
     src/components/SessionHistoryMenu.cpp
+    include/components/TaskPageMenu.h
+    src/components/TaskPageMenu.cpp
+    include/components/TaskCard.h
+    src/components/TaskCard.cpp
 
     #pages
     src/pages/DashboardPage.cpp

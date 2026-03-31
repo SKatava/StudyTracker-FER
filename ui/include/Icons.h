@@ -18,4 +18,8 @@ namespace Icons {
     const QString Clock         = "\uf017";
     const QString CheckIn       = "\uf274";
     const QString Add           = "\uf067";
+    const QString Task          = "\uf0ae";
+    const QString CheckDone     = "\uf058";
+    const QString CheckNot      = "\uf111";
+    
 }

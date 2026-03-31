@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QLayout>
 
+#include <components/TaskPageMenu.h>
+
 class TasksPage : public QWidget {
     Q_OBJECT
     
@@ -13,6 +15,9 @@ public:
 private:
     void setupUI();
     void setupConnections();
+
+    QVBoxLayout* layout;
+    TaskPageMenu* menu;
 
     
 };
