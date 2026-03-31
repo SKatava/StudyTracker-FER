@@ -3,8 +3,10 @@
 
 #include <QWidget>
 #include <QLayout>
+#include <QStackedWidget>
 
 #include <components/TaskPageMenu.h>
+#include <layout/TaskList.h>
 
 class TasksPage : public QWidget {
     Q_OBJECT
@@ -18,7 +20,8 @@ private:
 
     QVBoxLayout* layout;
     TaskPageMenu* menu;
-
+    TaskList* list;
+    QStackedWidget* pages;
     
 };
 

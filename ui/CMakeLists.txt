@@ -17,6 +17,8 @@ qt_add_executable(study_tracker
     include/layout/SessionHistory.h
     src/layout/AddSessionForm.cpp
     include/layout/AddSessionForm.h
+    src/layout/TaskList.cpp
+    include/layout/TaskList.h
 
     #events
     include/events/SubjectEvent.h
@@ -51,6 +53,8 @@ qt_add_executable(study_tracker
     src/components/TaskPageMenu.cpp
     include/components/TaskCard.h
     src/components/TaskCard.cpp
+    include/components/TaskListMenu.h
+    src/components/TaskListMenu.cpp
 
     #pages
     src/pages/DashboardPage.cpp

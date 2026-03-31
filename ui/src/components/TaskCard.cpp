@@ -21,6 +21,8 @@ void TaskCard::setupUI(const Task& task) {
     minutes             = new QLabel(( std::to_string(task.minutes) + 'm' ).c_str());
     icon                = new QLabel(Icons::Tasks);
     checkBox            = new QCheckBox();
+    done                = task.done;
+    id                  = task.id;
 
     if (!Fonts::IconFamily.isEmpty()) {
         QFont iconFont(Fonts::IconFamily);
@@ -28,7 +30,6 @@ void TaskCard::setupUI(const Task& task) {
         icon->setFont(iconFont);
     } else {
         qWarning() << "Icon font family not loaded - using fallback";
-        icon->setText("📋");              // simple clipboard fallback
     }
 
     auto subjects = AppContext::Instance().Subjects().GetSubjects();
@@ -46,6 +47,7 @@ void TaskCard::setupUI(const Task& task) {
     icon->setAlignment(Qt::AlignCenter);
 
     checkBox->setFixedSize(50, 50);
+    checkBox->setChecked(done);
 
     subject->setObjectName("primaryText");
     minutes->setObjectName("primaryText");
@@ -75,4 +77,18 @@ void TaskCard::setupUI(const Task& task) {
 
 void TaskCard::setupConnections() {
 
+}
+
+QString TaskCard::getSubjectName() {
+    return subject->text(); 
+}
+
+void TaskCard::onCheck() {
+    auto tasks = AppContext::Instance().Tasks().GetTasks();
+    for(auto item : tasks) {
+        if(item.id == id) {
+            item.done = checkBox->isChecked();
+            AppContext::Instance().Tasks().UpdateTask(item);
+        }
+    }
 }

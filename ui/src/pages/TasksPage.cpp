@@ -12,13 +12,18 @@ TasksPage::TasksPage(QWidget* parent) : QWidget(parent) {
 void TasksPage::setupUI() {
     layout = new QVBoxLayout(this);
     menu = new TaskPageMenu();
+    pages = new QStackedWidget();
+    list = new TaskList();
 
     Task task {1, 36, 0};
     TaskCard* card = new TaskCard(nullptr, task);
 
+    pages->addWidget(list);
+
     layout->addSpacing(50);
     layout->addWidget(menu, 0, Qt::AlignCenter);
-    layout->addWidget(card);
+    layout->addSpacing(50);
+    layout->addWidget(pages, 1, Qt::AlignHCenter);
     layout->addStretch();
 
 

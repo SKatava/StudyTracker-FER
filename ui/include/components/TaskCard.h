@@ -14,11 +14,13 @@ class TaskCard : public QFrame {
 
     public:
         TaskCard(QWidget* parent, const Task& task);
+        QString getSubjectName();
     private:
         void setupUI(const Task& task);
         void setupConnections();
         
         bool done {0};
+        int id;
 
         QHBoxLayout* layout;
         QVBoxLayout* infoLayout;
@@ -31,7 +33,8 @@ class TaskCard : public QFrame {
         QLabel* finish;
         QLabel* icon;
         
-        
+private slots:
+    void onCheck();
         
 };
 
