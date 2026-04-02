@@ -2,6 +2,8 @@
 
 #include <QScrollBar>
 
+#include <layout/AddTaskForm.h>
+
 #include <core/services/AppContext.h>
 
 TaskList::TaskList(QWidget* parent) : QWidget(parent) {
@@ -47,6 +49,7 @@ void TaskList::setupUI() {
 
 void TaskList::setupConnections() {
     connect(menu, &TaskListMenu::filterApplied, this, &TaskList::onFilterApplied);
+    connect(menu, &TaskListMenu::openTaskForm, this, &TaskList::onOpenTaskForm);
 }
 
 void TaskList::onFilterApplied(QString name) {
@@ -58,4 +61,16 @@ void TaskList::onFilterApplied(QString name) {
             card->hide();
         }
     }
+}
+
+void TaskList::onOpenTaskForm() {
+    AddTaskForm* form = new AddTaskForm(this);
+
+    form->move(
+        (width() - form->width()) / 2,
+        (height() - form->height()) / 2
+    );
+
+    form->show();
+    form->raise();
 }

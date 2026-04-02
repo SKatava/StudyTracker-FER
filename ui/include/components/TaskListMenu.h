@@ -23,7 +23,7 @@ private:
 
 signals:
     void filterApplied(QString name);
-    void openSessionForm();
+    void openTaskForm();
 
 };
 

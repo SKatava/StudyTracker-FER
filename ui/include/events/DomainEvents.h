@@ -7,6 +7,7 @@
 
 #include <core/domain/Subject.h>
 #include <core/domain/Session.h>
+#include <core/domain/Task.h>
 
 
 
@@ -28,6 +29,11 @@ public:
     void emitSessionUpdated(const Session& session);
     void emitSessionDeleted(int sessionId, int subjectId);
 
+    // ── Task related ──────────────────────────────────────────────
+    void emitTaskCreated(const Task& task);
+    void emitTaskUpdated(const Task& task);
+    void emitTaskDeleted(int taskId, int subjectId);
+
 signals:
     // Subject events
     void subjectCreated(const Subject& subject);
@@ -38,6 +44,11 @@ signals:
     void sessionCreated(const Session& session);
     void sessionUpdated(const Session& session);
     void sessionDeleted(int sessionId, int subjectId);
+
+    // Session events
+    void taskCreated(const Task& task);
+    void taskUpdated(const Task& task);
+    void taskDeleted(int taskId, int subjectId);
 
 
 private:
@@ -80,6 +91,21 @@ inline void DomainEvents::emitSessionUpdated(const Session& session)
 inline void DomainEvents::emitSessionDeleted(int sessionId, int subjectId)
 {
     emit sessionDeleted(sessionId, subjectId);
+}
+
+inline void DomainEvents::emitTaskCreated(const Task& task)
+{
+    emit taskCreated(task);
+}
+
+inline void DomainEvents::emitTaskUpdated(const Task& task)
+{
+    emit taskUpdated(task);
+}
+
+inline void DomainEvents::emitTaskDeleted(int sessionId, int subjectId)
+{
+    emit taskDeleted(sessionId, subjectId);
 }
 
 #endif

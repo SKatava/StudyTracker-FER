@@ -32,6 +32,7 @@ private:
 
 private slots:
     void onFilterApplied(QString name);
+    void onOpenTaskForm();
 };
 
 #endif

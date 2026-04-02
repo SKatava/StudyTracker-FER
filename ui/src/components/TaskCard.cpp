@@ -76,7 +76,7 @@ void TaskCard::setupUI(const Task& task) {
 }
 
 void TaskCard::setupConnections() {
-
+    connect(checkBox, &QCheckBox::clicked, this, &TaskCard::onCheck);
 }
 
 QString TaskCard::getSubjectName() {

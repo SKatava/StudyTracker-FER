@@ -12,6 +12,10 @@ std::vector<Task> TaskService::GetTasks() {
     return m_repo.GetAll();
 }
 
+void TaskService::UpdateTask(const Task& task) {
+    m_repo.Update(task);
+}
+
 void TaskService::RemoveTask(int id) {
     m_repo.Remove(id);
 }

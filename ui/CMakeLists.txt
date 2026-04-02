@@ -19,6 +19,8 @@ qt_add_executable(study_tracker
     include/layout/AddSessionForm.h
     src/layout/TaskList.cpp
     include/layout/TaskList.h
+    src/layout/AddTaskForm.cpp
+    include/layout/AddTaskForm.h
 
     #events
     include/events/SubjectEvent.h

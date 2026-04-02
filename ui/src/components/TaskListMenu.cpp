@@ -35,6 +35,6 @@ void TaskListMenu::setupConnections() {
         emit filterApplied(subjectFilter->currentText());
     });
     connect(newLogBtn, &QPushButton::clicked, this, [this]() {
-        emit openSessionForm();
+        emit openTaskForm();
     });
 }

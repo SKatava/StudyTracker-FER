@@ -97,11 +97,11 @@ void SQLiteTaskRepository::Update(const Task& task) {
         UPDATE tasks SET
             subject_id = ?,
             description = ?,
-            minutes = ?,
+            minutes_taken = ?,
             done = ?,
             start_date = ?,
             end_date = ?,
-            finish_date = ?,
+            finish_date = ?
         WHERE id = ?;
     )sql";
 
@@ -116,10 +116,11 @@ void SQLiteTaskRepository::Update(const Task& task) {
     sqlite3_bind_text(stmt, 2, task.description.c_str(), -1, SQLITE_TRANSIENT);
     sqlite3_bind_int(stmt, 3, task.minutes);
     sqlite3_bind_int(stmt, 4, task.done);
-    sqlite3_bind_text(stmt, 2, task.date_start.c_str(), -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(stmt, 2, task.date_end.c_str(), -1, SQLITE_TRANSIENT);
-    sqlite3_bind_text(stmt, 2, task.date_done.c_str(), -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 5, task.date_start.c_str(), -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 6, task.date_end.c_str(), -1, SQLITE_TRANSIENT);
+    sqlite3_bind_text(stmt, 7, task.date_done.c_str(), -1, SQLITE_TRANSIENT);
 
+    sqlite3_bind_int(stmt, 8, task.id);
 
     rc = sqlite3_step(stmt);
 
