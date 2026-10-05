@@ -107,7 +107,7 @@ QCheckBox::indicator {
     width: 32px;
     height: 32px;
     border: 2px solid #666;
-    border-radius: 4px;     /* optional rounded corners */
+    border-radius: 8px;     /* optional rounded corners */
 }
 
 QCheckBox::indicator:checked {
