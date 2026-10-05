@@ -59,7 +59,7 @@ void SubjectCard::setupUI(const Subject& subject) {
 
 void SubjectCard::setupConnections() {
     connect(checkInBtn, &QPushButton::clicked, this, [this]() {
-        int hours = hoursInput->text().toInt();
+        double hours = hoursInput->text().toDouble();
         hoursInput->setText(0);
 
         auto subjects = AppContext::Instance().Subjects().GetSubjects();

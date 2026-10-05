@@ -86,8 +86,8 @@ std::vector<Subject> SQLiteSubjectRepository::GetAll() {
         s.SetInvestedStudyMinutes(sqlite3_column_int(stmt, 7));
         s.SetInvestedTasksMinutes(sqlite3_column_int(stmt, 8));
         s.SetPoints(sqlite3_column_int(stmt, 9));
-        s.SetFinalGrade(sqlite3_column_int(stmt, 10));
-        s.SetIsFinished(sqlite3_column_int(stmt, 11));
+        s.SetIsFinished(sqlite3_column_int(stmt, 10));
+        s.SetFinalGrade(sqlite3_column_int(stmt, 11));
 
         subjects.push_back(std::move(s));
     }

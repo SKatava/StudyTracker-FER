@@ -203,7 +203,8 @@ QCheckBox {
 }
 
 #subjectCardContent {
-    color: #5d5d5d;
+    color: #9a9a9a;
+    font-size: 13px;
 }
 
 #headerTitle {
@@ -248,7 +249,7 @@ QProgressBar::chunk {
 
 #secondaryText {
     font-size: 14px;
-    color: #5d5d5d;
+    color: #9a9a9a;
 }
 
 #primaryText {

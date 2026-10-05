@@ -20,23 +20,16 @@ void DashboardPage::setupUI() {
     rootLayout->addWidget(activeSubjects);
     rootLayout->addStretch();
 
-    auto subjects = AppContext::Instance().Subjects().GetSubjects();
-
-    for(auto& item : subjects) {
-        SubjectCard* card = new SubjectCard(nullptr, item);
-        activeSubjectsLayout->addWidget(card);
-    }
 
     addSubjectBtn->setFixedSize(280, 200);
     addSubjectBtn->setObjectName("addSubjectBtn");
 
-    activeSubjectsLayout->addWidget(addSubjectBtn);
+    refreshSubjects();
 }
 
 void DashboardPage::setupConnections() {
     connect(addSubjectBtn, &QPushButton::clicked, this, &DashboardPage::onAddButtonClicked);
     connect(&SubjectEvents::instance(), &SubjectEvents::subjectCreated, this, &DashboardPage::onSubjectCreated);
-    int i = 0;
 }
 
 void DashboardPage::refreshSubjects() {
@@ -52,8 +45,10 @@ void DashboardPage::refreshSubjects() {
     auto subjects = AppContext::Instance().Subjects().GetSubjects();
 
     for(auto& item : subjects) {
-        SubjectCard* card = new SubjectCard(nullptr, item);
-        activeSubjectsLayout->addWidget(card);
+        if(!item.GetIsFinished()) {
+            SubjectCard* card = new SubjectCard(nullptr, item);
+            activeSubjectsLayout->addWidget(card);
+        }
     }
 
     activeSubjectsLayout->addWidget(addSubjectBtn);
@@ -74,10 +69,6 @@ void DashboardPage::onAddButtonClicked() {
 
 void DashboardPage::onSubjectCreated(const Subject& subject) {
     auto& service = AppContext::Instance().Subjects();
-
-    int id = service.CreateSubject(subject);
-    
-    auto subjects = service.GetSubjects();
-    
+    service.CreateSubject(subject);
     refreshSubjects();
 }
